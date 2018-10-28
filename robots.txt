@@ -1,0 +1,4 @@
+Sitemap: https://pieterdavid.github.io/sitemapindex.xml
+
+User-Agent: *
+Host: pieterdavid.github.io
