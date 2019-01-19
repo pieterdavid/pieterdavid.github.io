@@ -145,6 +145,7 @@ INDEX_READ_MORE_LINK = '<a class="button is-link" href="{link}" style="height:28
 NAVIGATION_LINKS = {
     DEFAULT_LANG: (
         ("http://twitter.com/pieterdavid_", "fa fa-twitter"),
+        ("https://www.linkedin.com/in/pieter-david-a04a77ab/", "fa fa-linkedin"),
         ("http://github.com/pieterdavid", "fa fa-github"),
         ("/rss.xml", "fa fa-rss"),
     ),
