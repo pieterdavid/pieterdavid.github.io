@@ -9,13 +9,10 @@
 
 Hello,
 
-I am a particle physicist working on the CMS experiment at the CERN LHC.
+I am a particle physicist, currently working on the CMS experiment at the CERN LHC (previously LHCb).
 Most of my work is about data analysis, and detector and reconstruction software.
 Physics results go into papers, but the more technical bits of the job
 (tools, techniques, computing tricks) often do not, so I made this blog to share some of those
 (and maybe some other things that come up) with colleagues near and far, and with anyone who finds them useful or interesting.
 
 Happy reading!
-
-
-Pieter
