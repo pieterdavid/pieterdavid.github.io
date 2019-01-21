@@ -142,14 +142,6 @@ NAVIGATION_LINKS = {
     ),
 }
 INDEX_READ_MORE_LINK = '<a class="button is-link" href="{link}" style="height:28px"> {read_more} <span class="icon is-small"> <i class="fa fa-angle-double-right"></i></span></a>'
-NAVIGATION_LINKS = {
-    DEFAULT_LANG: (
-        ("http://twitter.com/pieterdavid_", "fa fa-twitter"),
-        ("https://www.linkedin.com/in/pieter-david-a04a77ab/", "fa fa-linkedin"),
-        ("http://github.com/pieterdavid", "fa fa-github"),
-        ("/rss.xml", "fa fa-rss"),
-    ),
-}
 
 
 # Alternative navigation links. Works the same way NAVIGATION_LINKS does,
@@ -160,11 +152,11 @@ NAVIGATION_ALT_LINKS = {
 }
 
 # Name of the theme to use.
-THEME = "hemingway"
+THEME = "jidn"
 
 # Primary color of your theme. This will be used to customize your theme.
 # Must be a HEX value.
-THEME_COLOR = '#5670d4'
+THEME_COLOR = '#6a9fb5'
 
 # Theme configuration. Fully theme-dependent. (translatable)
 # Examples below are for bootblog4.
@@ -921,7 +913,7 @@ FEED_LINKS_APPEND_QUERY = False
 
 # A HTML fragment describing the license, for the sidebar.
 # (translatable)
-LICENSE = """<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons-Licentie" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>"""
+LICENSE = """<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /></a>"""
 # I recommend using the Creative Commons' wizard:
 # https://creativecommons.org/choose/
 # LICENSE = """
@@ -932,7 +924,7 @@ LICENSE = """<a rel="license" href="http://creativecommons.org/licenses/by-sa/4.
 
 # A small copyright notice for the page footer (in HTML).
 # (translatable)
-CONTENT_FOOTER = 'Contents &copy; {date}         {author} - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         with the <a href="https://themes.getnikola.com/v7/hemingway/" rel="nofollow">hemingway</a> theme         {license}'
+CONTENT_FOOTER = 'Contents &copy; {date}         {author} - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         {license}'
 
 # Things that will be passed to CONTENT_FOOTER.format().  This is done
 # for translatability, as dicts are not formattable.  Nikola will
@@ -1345,7 +1337,22 @@ WARN_ABOUT_TAG_METADATA = False
 
 # Put in global_context things you want available on all your templates.
 # It can be anything, data, functions, modules, etc.
-GLOBAL_CONTEXT = {}
+GLOBAL_CONTEXT = {
+    "JIDN": {
+        BLOG_AUTHOR: {
+            "image": "https://avatars0.githubusercontent.com/u/8883677?s=460&v=4",
+            "email": BLOG_EMAIL,
+            "map": "Brussels, Belgium",
+            "social": (
+                ##
+                "http://twitter.com/pieterdavid_",
+                "https://www.linkedin.com/in/pieter-david-a04a77ab/",
+                "http://github.com/pieterdavid"
+                )
+            }
+        },  # Extra info about authors
+    # "JIDN-theme": "theme-base-blue",
+    }
 
 # Add functions here and they will be called with template
 # GLOBAL_CONTEXT as parameter when the template is about to be
