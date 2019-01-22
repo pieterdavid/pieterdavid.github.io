@@ -79,9 +79,8 @@ ${comments.comment_link_script()}
       aria-label="Share on Facebook">
        <i class="fab fa-2x fa-fw fa-facebook-square" style="margin-left: -8px" aria-hidden="true" title="Share of Facebook" /i>
      </a>
-     <a href="https://plus.google.com/share?url=${post.permalink(absolute=True)|u}" aria-label="Share on Google+"
-      onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
-       <i class="fab fa-2x fa-fw fa-google-plus-square" style="margin-left: -8px" aria-hidden="true" title="Share on Google+" /i>
+     <a href="https://wa.me/?text=${post.permalink(absolute=True)|u}" aria-label="Share on WhatsApp">
+       <i class="fab fa-2x fa-fw fa-whatsapp-square" style="margin-left: -8px" aria-hidden="true" title="Share on WhatsApp" /i>
      </a>
      </span>
 </aside>
