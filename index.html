@@ -66,59 +66,59 @@ only the minimally required (modified, and depending) packages are checked out a
 The other targets—mostly shared libraries, executables, and python modules—are taken from the corresponding release area, which is distributed through
 the <a class="reference external" href="https://cvmfs.readthedocs.io/">CernVM-FS (or cvmfs)</a> filesystem.
 Since also the git objects are distributed in this way (to all CMS colleagues who have not
-already done so: set <tt class="docutils literal"><span class="pre">CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily</span></tt> when working
+already done so: set <code class="docutils literal"><span class="pre">CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily</span></code> when working
 on a machine with cvmfs), the cost of setting up a working area is very small (it typically
-takes a few seconds to run <tt class="docutils literal">cmsrel</tt>).</p>
+takes a few seconds to run <code class="docutils literal">cmsrel</code>).</p>
 <p>A less known feature of such a setup is that it also allows for very fast (and flexible)
 searching of the full repository, parts of it, and the complete git history, with
-<tt class="docutils literal">git grep</tt> and <tt class="docutils literal">git show</tt>. The rest of this post describes my favourite tricks and aliases.</p>
+<code class="docutils literal">git grep</code> and <code class="docutils literal">git show</code>. The rest of this post describes my favourite tricks and aliases.</p>
 <div class="section" id="git-grep-and-ack">
 <h2>git grep and ack</h2>
-<p>There are many online introductions to using <tt class="docutils literal">git grep</tt>, see e.g. the
+<p>There are many online introductions to using <code class="docutils literal">git grep</code>, see e.g. the
 <a class="reference external" href="http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/">"Search a git repo like a ninja" post by Travis Jeffery</a>,
-which also introduces a <tt class="docutils literal">git ack</tt> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
+which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
 (if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
-I would recommend the following customization (in <tt class="docutils literal"><span class="pre">~/.gitconfig</span></tt>):</p>
-<pre class="code ini"><a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-1"></a><span class="k">[alias]</span>
-<a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-3"></a><span class="k">[grep]</span>
-<a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-5"></a><span class="s">  lineNumber = true</span>
-<a name="rest_code_4ac05a47ba81414087e11ebcaadcd2e2-6"></a><span class="s">  color = auto</span>
+I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
+<pre class="code ini"><a name="rest_code_f45fa42f07984189860d3fc7e6248414-1"></a><span class="k">[alias]</span>
+<a name="rest_code_f45fa42f07984189860d3fc7e6248414-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
+<a name="rest_code_f45fa42f07984189860d3fc7e6248414-3"></a><span class="k">[grep]</span>
+<a name="rest_code_f45fa42f07984189860d3fc7e6248414-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_f45fa42f07984189860d3fc7e6248414-5"></a><span class="s">  lineNumber = true</span>
+<a name="rest_code_f45fa42f07984189860d3fc7e6248414-6"></a><span class="s">  color = auto</span>
 </pre>
-<p>The short version: run <tt class="docutils literal">git grep</tt> from the root of the repository (<tt class="docutils literal">$CMSSW_BASE/src</tt>) with one of</p>
-<pre class="code sh"><a name="rest_code_cb0b7a29d6e44a70ab71f1afd3d86d61-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
+<p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
+<pre class="code sh"><a name="rest_code_b2938f7e253743cf959fb797c5bc0ab5-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
 </pre>
-<p>where both the <tt class="docutils literal">&lt;tree&gt;</tt> and the <tt class="docutils literal"><span class="pre">--</span> path</tt> parts, to specify the revision, tag or branch,
+<p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.</p>
-<p>As a final example, the following command searches for the definition of the the <tt class="docutils literal">jetId</tt>
+<p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
 variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_5528de88ce424821b4076888c05acde9-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+<pre class="code sh"><a name="rest_code_d71b9bafb1a44904b6550ad1b6140e15-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 </pre>
 </div>
 <div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting">
 <h2>git show with vim as a pager, and syntax higlighting</h2>
-<p>Nothing too special by itself, but a useful helper command to know about: <tt class="docutils literal">git show revision:path</tt>
-can be used as the equivalent of <tt class="docutils literal">cat</tt>, <tt class="docutils literal">less</tt> (or your favourite plain-text pager)
+<p>Nothing too special by itself, but a useful helper command to know about: <code class="docutils literal">git show revision:path</code>
+can be used as the equivalent of <code class="docutils literal">cat</code>, <code class="docutils literal">less</code> (or your favourite plain-text pager)
 for any revision of any file (also when they are not in the working directory).</p>
-<p>Of course <tt class="docutils literal">cat</tt> and <tt class="docutils literal">less</tt> are not the most convenient tools to browse large source files.
+<p>Of course <code class="docutils literal">cat</code> and <code class="docutils literal">less</code> are not the most convenient tools to browse large source files.
 vim can be used as a pager (with the <a class="reference external" href="https://github.com/vim/vim/blob/master/runtime/macros/less.vim">less.vim</a>
 script). Syntax highlighting does not work out of the box, however,
-because <tt class="docutils literal">ftplugin</tt> mostly relies on the filename extension for detecting the filetype.
-But when calling <tt class="docutils literal">git show</tt>, we have a filename, so we can use a trick:
-first ask <tt class="docutils literal">ftplugin</tt> which filetype it would resolve, and then pass it when opening vim.
+because <code class="docutils literal">ftplugin</code> mostly relies on the filename extension for detecting the filetype.
+But when calling <code class="docutils literal">git show</code>, we have a filename, so we can use a trick:
+first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
-<tt class="docutils literal"><span class="pre">~/.vim/macros/</span></tt>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_a91e9ffaa56d4bc3a843ec0435e71cf2-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_a91e9ffaa56d4bc3a843ec0435e71cf2-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
+<code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
+<pre class="code sh"><a name="rest_code_9f11551f5f9b40d3a658c3d9aec4bb8d-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
+<a name="rest_code_9f11551f5f9b40d3a658c3d9aec4bb8d-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
 </pre>
 <p>The following git alias (using the trick from
 <a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
-will run the script on the output of <tt class="docutils literal">git show</tt></p>
-<pre class="code ini"><a name="rest_code_168652a0e4a14fa59c4a2f737aeb3b8b-1"></a><span class="k">[alias]</span>
-<a name="rest_code_168652a0e4a14fa59c4a2f737aeb3b8b-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
+will run the script on the output of <code class="docutils literal">git show</code></p>
+<pre class="code ini"><a name="rest_code_10315cce822d430296b240bf63bad6da-1"></a><span class="k">[alias]</span>
+<a name="rest_code_10315cce822d430296b240bf63bad6da-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
 </pre>
-<p>and that's all: <tt class="docutils literal">git view HEAD:some_file.cpp</tt> now shows the file in vim, with
+<p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
 (in this case C++) syntax highlighting.</p>
 </div>
 </div>
@@ -150,7 +150,7 @@ Physics results go into papers, but the more technical bits of the job
 
 
         
-        <script src="https://pietersblogcomments.pythonanywhere.com/js/count.min.js" data-isso="https://pietersblogcomments.pythonanywhere.com/"></script><footer id="footer"><p>Contents © 2019         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
+        <script src="https://pietersblogcomments.pythonanywhere.com/js/count.min.js" data-isso="https://pietersblogcomments.pythonanywhere.com/" data-isso-lang="en"></script><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
             
         </footer>
 </div>
