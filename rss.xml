@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pieter David's blog</title><link>https://pieterdavid.github.io/</link><description>Pieter's blog</description><atom:link href="https://pieterdavid.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:pieter(point)david(at)SPAMNOTgmail(point)com"&gt;Pieter David&lt;/a&gt; &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /&gt;&lt;/a&gt;</copyright><lastBuildDate>Fri, 17 Jul 2020 21:12:44 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Searching and browsing CMSSW: use git</title><link>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="https://cms-sw.github.io/"&gt;CMSSW&lt;/a&gt;, the software that the CMS experiment uses to process collision data,
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pieter David's blog</title><link>https://pieterdavid.github.io/</link><description>Pieter's blog</description><atom:link href="https://pieterdavid.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:pieter(point)david(at)SPAMNOTgmail(point)com"&gt;Pieter David&lt;/a&gt; &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 15 Jul 2020 20:39:35 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>Searching and browsing CMSSW: use git</title><link>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;p&gt;&lt;a class="reference external" href="https://cms-sw.github.io/"&gt;CMSSW&lt;/a&gt;, the software that the CMS experiment uses to process collision data,
 from the detector readout to a format suitable for analysis,
 is contained in one big git repository, &lt;a class="reference external" href="https://github.com/cms-sw/cmssw"&gt;cms-sw/cmssw.git&lt;/a&gt;.
 Since documentation is not always kept up to date, or missing some details,
@@ -10,54 +10,54 @@ only the minimally required (modified, and depending) packages are checked out a
 The other targets—mostly shared libraries, executables, and python modules—are taken from the corresponding release area, which is distributed through
 the &lt;a class="reference external" href="https://cvmfs.readthedocs.io/"&gt;CernVM-FS (or cvmfs)&lt;/a&gt; filesystem.
 Since also the git objects are distributed in this way (to all CMS colleagues who have not
-already done so: set &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily&lt;/span&gt;&lt;/code&gt; when working
+already done so: set &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily&lt;/span&gt;&lt;/tt&gt; when working
 on a machine with cvmfs), the cost of setting up a working area is very small (it typically
-takes a few seconds to run &lt;code class="docutils literal"&gt;cmsrel&lt;/code&gt;).&lt;/p&gt;
+takes a few seconds to run &lt;tt class="docutils literal"&gt;cmsrel&lt;/tt&gt;).&lt;/p&gt;
 &lt;p&gt;A less known feature of such a setup is that it also allows for very fast (and flexible)
 searching of the full repository, parts of it, and the complete git history, with
-&lt;code class="docutils literal"&gt;git grep&lt;/code&gt; and &lt;code class="docutils literal"&gt;git show&lt;/code&gt;. The rest of this post describes my favourite tricks and aliases.&lt;/p&gt;
+&lt;tt class="docutils literal"&gt;git grep&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;git show&lt;/tt&gt;. The rest of this post describes my favourite tricks and aliases.&lt;/p&gt;
 &lt;div class="section" id="git-grep-and-ack"&gt;
 &lt;h2&gt;git grep and ack&lt;/h2&gt;
-&lt;p&gt;There are many online introductions to using &lt;code class="docutils literal"&gt;git grep&lt;/code&gt;, see e.g. the
+&lt;p&gt;There are many online introductions to using &lt;tt class="docutils literal"&gt;git grep&lt;/tt&gt;, see e.g. the
 &lt;a class="reference external" href="http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/"&gt;"Search a git repo like a ninja" post by Travis Jeffery&lt;/a&gt;,
-which also introduces a &lt;code class="docutils literal"&gt;git ack&lt;/code&gt; alias to format the results like &lt;a class="reference external" href="https://beyondgrep.com/"&gt;ack&lt;/a&gt;
+which also introduces a &lt;tt class="docutils literal"&gt;git ack&lt;/tt&gt; alias to format the results like &lt;a class="reference external" href="https://beyondgrep.com/"&gt;ack&lt;/a&gt;
 (if you do not know &lt;a class="reference external" href="https://beyondgrep.com/"&gt;ack&lt;/a&gt; yet: it is like &lt;a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html"&gt;grep&lt;/a&gt; but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
-I would recommend the following customization (in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.gitconfig&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
-&lt;pre class="code ini"&gt;&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;ack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;grep --break --heading --line-number --color=auto&lt;/span&gt;
-&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;[grep]&lt;/span&gt;
-&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-4"&gt;&lt;/a&gt;  &lt;span class="na"&gt;extendRegexp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
-&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;  lineNumber = true&lt;/span&gt;
-&lt;a name="rest_code_f45fa42f07984189860d3fc7e6248414-6"&gt;&lt;/a&gt;&lt;span class="s"&gt;  color = auto&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;The short version: run &lt;code class="docutils literal"&gt;git grep&lt;/code&gt; from the root of the repository (&lt;code class="docutils literal"&gt;$CMSSW_BASE/src&lt;/code&gt;) with one of&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_b2938f7e253743cf959fb797c5bc0ab5-1"&gt;&lt;/a&gt;git &lt;span class="o"&gt;[&lt;/span&gt;grep or ack&lt;span class="o"&gt;]&lt;/span&gt; pattern &amp;lt;tree&amp;gt; -- &amp;lt;path&amp;gt;
-&lt;/pre&gt;&lt;p&gt;where both the &lt;code class="docutils literal"&gt;&amp;lt;tree&amp;gt;&lt;/code&gt; and the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--&lt;/span&gt; path&lt;/code&gt; parts, to specify the revision, tag or branch,
+I would recommend the following customization (in &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.gitconfig&lt;/span&gt;&lt;/tt&gt;):&lt;/p&gt;
+&lt;pre class="code ini"&gt;&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;ack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;grep --break --heading --line-number --color=auto&lt;/span&gt;
+&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;[grep]&lt;/span&gt;
+&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-4"&gt;&lt;/a&gt;  &lt;span class="na"&gt;extendRegexp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;  lineNumber = true&lt;/span&gt;
+&lt;a name="rest_code_f73a9e5343504a0bb9cff8a2cf91b985-6"&gt;&lt;/a&gt;&lt;span class="s"&gt;  color = auto&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;The short version: run &lt;tt class="docutils literal"&gt;git grep&lt;/tt&gt; from the root of the repository (&lt;tt class="docutils literal"&gt;$CMSSW_BASE/src&lt;/tt&gt;) with one of&lt;/p&gt;
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_aaaa24f3dd3d4070812dedca578deb64-1"&gt;&lt;/a&gt;git &lt;span class="o"&gt;[&lt;/span&gt;grep or ack&lt;span class="o"&gt;]&lt;/span&gt; pattern &amp;lt;tree&amp;gt; -- &amp;lt;path&amp;gt;
+&lt;/pre&gt;&lt;p&gt;where both the &lt;tt class="docutils literal"&gt;&amp;lt;tree&amp;gt;&lt;/tt&gt; and the &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;--&lt;/span&gt; path&lt;/tt&gt; parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.&lt;/p&gt;
-&lt;p&gt;As a final example, the following command searches for the definition of the the &lt;code class="docutils literal"&gt;jetId&lt;/code&gt;
+&lt;p&gt;As a final example, the following command searches for the definition of the the &lt;tt class="docutils literal"&gt;jetId&lt;/tt&gt;
 variable in a specific release:&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_d71b9bafb1a44904b6550ad1b6140e15-1"&gt;&lt;/a&gt;git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_3a5123de7a854ba1a565bcdd70bb3f70-1"&gt;&lt;/a&gt;git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 &lt;/pre&gt;&lt;/div&gt;
 &lt;div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting"&gt;
 &lt;h2&gt;git show with vim as a pager, and syntax higlighting&lt;/h2&gt;
-&lt;p&gt;Nothing too special by itself, but a useful helper command to know about: &lt;code class="docutils literal"&gt;git show revision:path&lt;/code&gt;
-can be used as the equivalent of &lt;code class="docutils literal"&gt;cat&lt;/code&gt;, &lt;code class="docutils literal"&gt;less&lt;/code&gt; (or your favourite plain-text pager)
+&lt;p&gt;Nothing too special by itself, but a useful helper command to know about: &lt;tt class="docutils literal"&gt;git show revision:path&lt;/tt&gt;
+can be used as the equivalent of &lt;tt class="docutils literal"&gt;cat&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;less&lt;/tt&gt; (or your favourite plain-text pager)
 for any revision of any file (also when they are not in the working directory).&lt;/p&gt;
-&lt;p&gt;Of course &lt;code class="docutils literal"&gt;cat&lt;/code&gt; and &lt;code class="docutils literal"&gt;less&lt;/code&gt; are not the most convenient tools to browse large source files.
+&lt;p&gt;Of course &lt;tt class="docutils literal"&gt;cat&lt;/tt&gt; and &lt;tt class="docutils literal"&gt;less&lt;/tt&gt; are not the most convenient tools to browse large source files.
 vim can be used as a pager (with the &lt;a class="reference external" href="https://github.com/vim/vim/blob/master/runtime/macros/less.vim"&gt;less.vim&lt;/a&gt;
 script). Syntax highlighting does not work out of the box, however,
-because &lt;code class="docutils literal"&gt;ftplugin&lt;/code&gt; mostly relies on the filename extension for detecting the filetype.
-But when calling &lt;code class="docutils literal"&gt;git show&lt;/code&gt;, we have a filename, so we can use a trick:
-first ask &lt;code class="docutils literal"&gt;ftplugin&lt;/code&gt; which filetype it would resolve, and then pass it when opening vim.
+because &lt;tt class="docutils literal"&gt;ftplugin&lt;/tt&gt; mostly relies on the filename extension for detecting the filetype.
+But when calling &lt;tt class="docutils literal"&gt;git show&lt;/tt&gt;, we have a filename, so we can use a trick:
+first ask &lt;tt class="docutils literal"&gt;ftplugin&lt;/tt&gt; which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the &lt;a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e"&gt;filetypeless.sh&lt;/a&gt; script (which should be installed in
-&lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/macros/&lt;/span&gt;&lt;/code&gt;), the gist of it is&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_9f11551f5f9b40d3a658c3d9aec4bb8d-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;vim -es --cmd &lt;span class="s2"&gt;"filetype on"&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;':exec ":set filetype?" | exec ":q!"'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_9f11551f5f9b40d3a658c3d9aec4bb8d-2"&gt;&lt;/a&gt;vim -R --cmd &lt;span class="s1"&gt;'let no_plugin_maps = 1'&lt;/span&gt; -c &lt;span class="s2"&gt;"set &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;'runtime! macros/less.vim'&lt;/span&gt;
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/macros/&lt;/span&gt;&lt;/tt&gt;), the gist of it is&lt;/p&gt;
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_5de6af7ae03b4ada905d4206f83c4141-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;vim -es --cmd &lt;span class="s2"&gt;"filetype on"&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;':exec ":set filetype?" | exec ":q!"'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_5de6af7ae03b4ada905d4206f83c4141-2"&gt;&lt;/a&gt;vim -R --cmd &lt;span class="s1"&gt;'let no_plugin_maps = 1'&lt;/span&gt; -c &lt;span class="s2"&gt;"set &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;'runtime! macros/less.vim'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;The following git alias (using the trick from
 &lt;a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display"&gt;this recipe&lt;/a&gt;)
-will run the script on the output of &lt;code class="docutils literal"&gt;git show&lt;/code&gt;&lt;/p&gt;
-&lt;pre class="code ini"&gt;&lt;a name="rest_code_10315cce822d430296b240bf63bad6da-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;a name="rest_code_10315cce822d430296b240bf63bad6da-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"&lt;/span&gt;
-&lt;/pre&gt;&lt;p&gt;and that's all: &lt;code class="docutils literal"&gt;git view HEAD:some_file.cpp&lt;/code&gt; now shows the file in vim, with
+will run the script on the output of &lt;tt class="docutils literal"&gt;git show&lt;/tt&gt;&lt;/p&gt;
+&lt;pre class="code ini"&gt;&lt;a name="rest_code_9b058509db19412a801e31e317d9b71e-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;a name="rest_code_9b058509db19412a801e31e317d9b71e-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"&lt;/span&gt;
+&lt;/pre&gt;&lt;p&gt;and that's all: &lt;tt class="docutils literal"&gt;git view HEAD:some_file.cpp&lt;/tt&gt; now shows the file in vim, with
 (in this case C++) syntax highlighting.&lt;/p&gt;
 &lt;/div&gt;&lt;/div&gt;</description><guid>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</guid><pubDate>Mon, 11 Feb 2019 08:15:00 GMT</pubDate></item><item><title>Welcome to my blog</title><link>https://pieterdavid.github.io/posts/welcome/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;p&gt;Hello,&lt;/p&gt;
 &lt;p&gt;I am a particle physicist, currently working on the CMS experiment at the CERN LHC (previously LHCb).
