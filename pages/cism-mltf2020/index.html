@@ -95,8 +95,8 @@ and to be familiar with using SSH and the command line) if you have a stable
 internet connection is to open a terminal and launch an interactive job with slurm on the
 <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Computing/index.html#id1">Manneback</a> cluster.</p>
 <p>First connect to the interactive node:</p>
-<pre class="code sh"><a name="rest_code_05cd09ebf8c94512ad57c1a0cfa40af3-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
-<a name="rest_code_05cd09ebf8c94512ad57c1a0cfa40af3-2"></a>ssh manneback.cism.ucl.ac.be
+<pre class="code sh"><a name="rest_code_c41b2991a6a748069624c38780297c17-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
+<a name="rest_code_c41b2991a6a748069624c38780297c17-2"></a>ssh manneback.cism.ucl.ac.be
 </pre>
 <p>We will in any case launch an interactive job on the worker (such that we
 don't all compete for resources on the same machine), but there are two options:
@@ -105,11 +105,11 @@ notebook (and view some figures) from the browser on your personal computer.</p>
 <p>This needs a tunnel to manneback, which can be set up with <a class="reference external" href="https://sshuttle.readthedocs.io/en/stable/">sshuttle</a> following
 the <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Other/index.html#jupyter">CISM instructions</a>,
 and changing the <code class="docutils literal">srun</code> command to</p>
-<pre class="code sh"><a name="rest_code_959466b9ce204f50b478b33aeeeb1fad-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
+<pre class="code sh"><a name="rest_code_d1ed8011f37f45638afe107ef165a027-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
 </pre>
 <p>which will run</p>
-<pre class="code sh"><a name="rest_code_9efd847d40b54b9f850450431fcf70a8-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
-<a name="rest_code_9efd847d40b54b9f850450431fcf70a8-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
+<pre class="code sh"><a name="rest_code_90e635799e5e457ca1f5ee7b94b26782-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
+<a name="rest_code_90e635799e5e457ca1f5ee7b94b26782-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
 </pre>
 <p>in an interactive slurm job: source an environment setup script, and launch
 a <a class="reference external" href="http://jupyter.org">Jupyter</a> kernel..
@@ -122,15 +122,15 @@ Thanks to the tunnel you can open this in a web browser on your laptop/desktop
 <p>To check that everything is working correctly, you can create a test notebook
 somewhere in your home directory, and try the following to check that
 <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> is correctly set up:</p>
-<pre class="code python"><a name="rest_code_68638ccaacf949da94b1cb1c545000a2-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<a name="rest_code_68638ccaacf949da94b1cb1c545000a2-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_b335250740644fad86a5ceade52f7ca4-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<a name="rest_code_b335250740644fad86a5ceade52f7ca4-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
 </pre>
 <p>The main advantage of the notebook over an <a class="reference external" href="http://ipython.org">IPython</a> session is that this gives
 an inline figure:</p>
-<pre class="code python"><a name="rest_code_bf291d00de6e45f2952c9932887c5210-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a name="rest_code_bf291d00de6e45f2952c9932887c5210-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<a name="rest_code_bf291d00de6e45f2952c9932887c5210-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<a name="rest_code_bf291d00de6e45f2952c9932887c5210-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_b0bc63a2785740798d08a81f17d65862-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a name="rest_code_b0bc63a2785740798d08a81f17d65862-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<a name="rest_code_b0bc63a2785740798d08a81f17d65862-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<a name="rest_code_b0bc63a2785740798d08a81f17d65862-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre>
 </div>
 <div class="section" id="using-binder">
@@ -154,7 +154,7 @@ which requires Python 3.5 or above.</p>
 on dockerhub as
 <a class="reference external" href="https://hub.docker.com/r/pieterdavid/cism-mltf2020-docker">pieterdavid/cism-mltf2020-docker</a>,
 and can be pulled with</p>
-<pre class="code sh"><a name="rest_code_5cc89bc88b304ff19ace789de1e3d9fc-1"></a>docker pull pieterdavid/cism-mltf2020-docker
+<pre class="code sh"><a name="rest_code_f95fd91fd4e744c1a05fcf308a192fe4-1"></a>docker pull pieterdavid/cism-mltf2020-docker
 </pre>
 </div>
 </div>
