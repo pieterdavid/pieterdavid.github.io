@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-nikola = {extras = ["extras"],version = "*"}
+nikola = {git = "https://github.com/getnikola/nikola.git"}
 
 [requires]
 python_version = "3.8"

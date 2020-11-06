@@ -3,6 +3,7 @@
 !.gitignore
 !.travis.yml
 !.nojekyll
+Pipfile.lock
 *~
 output/
 __pycache__/

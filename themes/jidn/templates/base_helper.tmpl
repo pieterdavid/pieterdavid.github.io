@@ -93,7 +93,12 @@ lang="${lang}">
             <link href="/assets/css/custom.css" rel="stylesheet" type="text/css">
         %endif
     %endif
+    %if needs_ipython_css:
+      <link href="/assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+      <link href="/assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+    %endif
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css" integrity="sha256-P64qV9gULPHiZTdrS1nM59toStkgjM0dsf5mK/UwBV4=" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 </%def>
 
 <%def name="html_feedlinks()">
