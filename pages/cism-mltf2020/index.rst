@@ -15,7 +15,7 @@ Table of contents
 -----------------
 
 - `A brief introduction to machine learning <mlintro.html>`_ (with Tensorflow_)
-- `A more technical introduction to tensorflow <tfprimer>`_
+- `A more technical introduction to Tensorflow <tfprimer.html>`_
 - An exercise with a slightly more interesting problem
 
 Getting set up
@@ -103,6 +103,15 @@ for the exercises.
 Resources will be limited, so some of the larger networks may not finish
 training.
 
+Using Colaboratory_
+'''''''''''''''''''
+
+If you have a Google account, you can use Colaboratory_ to interactively edit
+and run notebooks.
+The environment is meant for machine learning, so no additional setup is
+required (resources are not guaranteed, but likely sufficient for anything we
+will do this afternoon).
+
 Locally
 '''''''
 
@@ -110,6 +119,28 @@ If your internet connection is not very stable, or you are used to running
 python on your personal computer or elsewhere, you can also install Tensorflow_
 in a conda_ environment, or (preferably in a `virtual environment`_) with pip,
 more details can be found in the `installation instructions`_.
+
+With conda_, all you should need is this:
+
+.. code-block:: sh
+
+   conda config --add channels conda-forge # if not already the case
+   conda create -n mltftraining2020 tensorflow=2.3.0 tensorboard=2.3.0 ipython matplotlib ipykernel
+   conda activate mltftraining2020
+   ipython kernel install --user --name "mltftraining2020"
+
+And with virtualenv and pip:
+
+.. code-block:: sh
+
+   python -m venv mltftraining2020 # pick a name
+   source mltftraining2020/bin/activate
+   pip install tensorflow tensorboard ipython matplotlib ipykernel
+   ipython kernel install --user --name "mltftraining2020"
+
+If you do not already have the Jupyter_ notebook server installed, you should
+add the ``notebook`` package to the conda or pip install command.
+The last line installs a kernel that you can select to run the notebook with.
 
 The exercises assume that you are have at least version 2.1.0 of Tensorflow_,
 which requires Python 3.5 or above.
@@ -135,6 +166,8 @@ and can be pulled with
 .. _sshuttle: https://sshuttle.readthedocs.io/en/stable/
 
 .. _binder: https://mybinder.org
+
+.. _Colaboratory: https://colab.research.google.com/
 
 .. _docker: https://www.docker.com
 
