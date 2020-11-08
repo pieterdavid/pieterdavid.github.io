@@ -7,34 +7,38 @@
                         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
  <url>
   <loc>https://pieterdavid.github.io/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/2019/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/archive.html</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/categories/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/pages/cism-mltf2020/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/pages/cism-mltf2020/mlintro.html</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
+ </url>
+ <url>
+  <loc>https://pieterdavid.github.io/pages/cism-mltf2020/tfprimer.html</loc>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
  <url>
   <loc>https://pieterdavid.github.io/posts/welcome/</loc>
-  <lastmod>2020-11-06T11:57:00Z</lastmod>
+  <lastmod>2020-11-08T12:27:00Z</lastmod>
  </url>
 </urlset>
