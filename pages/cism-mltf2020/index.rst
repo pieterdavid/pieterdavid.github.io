@@ -21,11 +21,10 @@ Table of contents
 Getting set up
 --------------
 
-This training has some exercises, so you will need to have an environment
-where you can play a bit with Tensorflow_.
-
-Ideally you would check that this works for you before the training,
-to save a bit of time.
+While not absolutely essential, it is nice if you can try some things yourself
+(time permitting, there are also some exercises), so if possible you should 
+try to set up an environment where you can play a bit with Tensorflow_ (ideally
+before the training, to save a bit of time).
 
 On manneback
 ''''''''''''
