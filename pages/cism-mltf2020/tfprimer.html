@@ -83,7 +83,7 @@ On the <a href="https://www.tensorflow.org">website</a> you will find many libra
 <h3 id="Fundamental-classes-and-concepts">Fundamental classes and concepts<a class="anchor-link" href="tfprimer.html#Fundamental-classes-and-concepts">¶</a>
 </h3>
 <p>In the <a href="mlintro.html#A-first-example">first example</a> we have used Tensorflow largely as a drop-in replacement.
-That worked because it provides a lot of the same interface, and because the <code>Tensor</code> class can for many things be used just like a <a href="https://numpy.org">numpy</a> array.</p>
+That worked because it provides a lot of the same interface, and because the <code>Tensor</code> class can for many things be used just like a <a href="https://numpy.org">numpy</a> array (see <a href="https://www.tensorflow.org/guide/tensor">this guide</a> for some more advanced uses).</p>
 
 </div>
 </div>
@@ -347,7 +347,8 @@ Since Tensorflow 2.0, the default changed to use the "eager" mode, where the cal
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If everything is set up correctly, this will show the interactive version of this (alternatively, you can view it at the bottom of <a href="https://www.tensorflow.org/tensorboard/graphs#graphs_of_tffunctions">this page</a>)
 <img src="../../20201108-133809.png" alt="tensorboard screenshot"></p>
-<p>Tensorflow graphs can be optimized depending for different environments, e.g. for inference (evaluation of the neural network outupts) on mobile devices, see <a href="https://www.tensorflow.org/guide/graph_optimization">this overview</a>.</p>
+<p>Tensorflow graphs can be optimized depending for different environments, e.g. for inference (evaluation of the neural network outupts) on mobile devices, see <a href="https://www.tensorflow.org/guide/graph_optimization">this overview</a>.
+An additional speedup can be obtained by using the <a href="https://www.tensorflow.org/xla">XLA</a> compiler, which will generate optimised computation kernels specifically for the model you use.</p>
 <p>The <code>tf.function</code> helper function converts a python function to a Tensorflow computation graph, more details about that are given in <a href="https://www.tensorflow.org/guide/function">this guide</a>.</p>
 
 </div>
@@ -427,7 +428,8 @@ It is a very efficient way to calculate all the derivatives, since each derivati
 <p>As mentioned before, trainable parameters should be a <code>Variable</code> instances, because computation graphs can change the values of a <code>Variable</code>, but not of a <code>Tensor</code> (this allows to make a single graph for a training step, or even for the whole training of a neural network).</p>
 <h3 id="Higher-level-interfaces">Higher-level interfaces<a class="anchor-link" href="tfprimer.html#Higher-level-interfaces">¶</a>
 </h3>
-<p>So far we have focused on the core concepts, but for many common tasks, there are helper functions and classes in the <a href="https://keras.io">keras</a> library, that is now included in Tensorflow as the <code>tensorflow.keras</code> module.</p>
+<p>So far we have focused on the core concepts, but for many common tasks, there are helper functions and classes in the <a href="https://keras.io">keras</a> library, which is now included in Tensorflow as the <code>tensorflow.keras</code> module.
+There is a wealth of documentation and examples on its website, and in the</p>
 <p>The core class is <a href="https://www.tensorflow.org/api_docs/python/tf/keras/Model"><code>Model</code></a>, which represents a neural network, and provides a lot of useful common functionality (e.g. using predefined minimizers, splitting out a test dataset, keeping track of training and test loss).</p>
 <p>Building a neural network of the type we have seen so far is very easy with the <a href="https://www.tensorflow.org/guide/keras/sequential_model">sequential model</a>: all that need to be specified is the number of nodes in each layer, the activation function, and the type of layer.
 Our example from before can then be rewritten like this (output is turned off with <code>verbose=0</code>, otherwise we would get 500 lines printed with the progress of the training):</p>
@@ -553,18 +555,15 @@ Our example from before can then be rewritten like this (output is turned off wi
 </div>
 
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="prompt input_prompt">
+</div>
 <div class="inner_cell">
-    <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>For more complex layouts, there is also the <a href="https://www.tensorflow.org/guide/keras/functional">functional API</a>, which allows to construct a neural network by applying functions on a set of input nodes (the <code>Model</code> is then constructed with a list of input and output nodes, and behaves the same otherwise).</p>
 
-    </div>
 </div>
 </div>
-
 </div>
 </div>
     </section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">

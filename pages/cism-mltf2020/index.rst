@@ -14,12 +14,13 @@ see the* `indico page`_ *for more details.*
 Table of contents
 -----------------
 
-- `A brief introduction to machine learning <mlintro.html>`_ (with Tensorflow_)
+- `A brief introduction to machine learning <mlintro.html>`_
 - `A more technical introduction to Tensorflow <tfprimer.html>`_
+- `Other building blocks and architectures <nnarchitectureexamples.html>`_
 - An exercise with a slightly more interesting problem
 
-Getting set up
---------------
+To make it more interactive
+---------------------------
 
 While not absolutely essential, it is nice if you can try some things yourself
 (time permitting, there are also some exercises), so if possible you should 
