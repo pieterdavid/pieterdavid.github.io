@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html prefix="" lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="description" content="Material for the CISM/CÉCI training session on 10/11/2020, see https://indico.cism.ucl.ac.be/event/84/">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>More ingredients for machine learning with neural networks | Pieter David's blog</title>
+<link href="../../assets/css/all.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css" integrity="sha256-P64qV9gULPHiZTdrS1nM59toStkgjM0dsf5mK/UwBV4=" crossorigin="anonymous">
+<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&amp;display=swap" rel="stylesheet">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../../rss.xml">
+<link rel="canonical" href="https://pieterdavid.github.io/pages/cism-mltf2020/morenningredients.html">
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+        displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+        processEscapes: true
+    },
+    displayAlign: 'center', // Change this to 'left' if you want left-aligned equations.
+    "HTML-CSS": {
+        styles: {'.MathJax_Display': {"margin": 0}}
+    }
+});
+</script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Pieter David">
+<meta property="og:site_name" content="Pieter David's blog">
+<meta property="og:title" content="More ingredients for machine learning with neural networks">
+<meta property="og:url" content="https://pieterdavid.github.io/pages/cism-mltf2020/morenningredients.html">
+<meta property="og:description" content="Material for the CISM/CÉCI training session on 10/11/2020, see https://indico.cism.ucl.ac.be/event/84/">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-11-03T19:36:53+01:00">
+</head>
+<body>
+    <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
+    <!-- Target for toggling the sidebar `.sidebar-checkbox` is for regular
+            styles, `#sidebar-checkbox` for behavior. -->
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"><!-- Toggleable sidebar --><div class="sidebar" id="sidebar">
+
+        <nav role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="../../"><i class="fa fa-2x fa-fw fa-home"></i> Home</a>
+        </nav><nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="../../archive.html">Archive</a>
+        <a class="sidebar-nav-item" href="../../categories/">Tags</a>
+        <a class="sidebar-nav-item" href="../../rss.xml">RSS feed</a>
+    
+    
+    </nav>
+</div>
+
+    <!-- Wrap is the content to shift when toggling the sidebar. We wrap the
+         content to avoid any CSS collisions with our real content. -->
+    <div class="wrap">
+      <div class="masthead">
+        <div class="container">
+          
+    <h2 id="brand" class="masthead-title">
+      <a href="https://pieterdavid.github.io/" title="Pieter David's blog" rel="home">Pieter David's blog</a>
+    </h2>
+
+        </div>
+      </div>
+
+      <div class="container content" id="content">
+        
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><header><h1 class="post-title p-name entry-title" itemprop="headline">
+      <a href="https://pieterdavid.github.io/pages/cism-mltf2020/morenningredients.html" class="u-url">More ingredients for machine learning with neural networks</a>
+</h1>
+        <div class="metadata">
+        <meta itemprop="inLanguage" content="en">
+<meta name="description" itemprop="description" content="Material for the CISM/CÉCI training session on 10/11/2020, see https://indico.cism.ucl.ac.be/event/84/">
+</div>
+        
+
+    </header><section class="e-content entry-content" itemprop="articleBody text"><div>
+<em>This page is part of the material for the
+<a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a>
+session of the
+<a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>,
+see the <a href="index.html">table of contents</a> for the other parts.</em><div class="section" id="activation-functions">
+<h2>Activation functions</h2>
+<p>We have already seen
+<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/relu">rectified linear unit (relu)</a>,
+<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/sigmoid">sigmoid</a>, and
+<a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/softmax">softmax</a> activation functions,
+but there are more common choices.</p>
+<ul class="simple">
+<li><p>the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/softmax">hyperbolic tangent (tanh)</a>
+function is very similar to the sigmoid, but maps to <span class="math">\([-1, 1]\)</span> instead of <span class="math">\([0,1]\)</span>.</p></li>
+<li><p>the <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/selu">scaled exponential linear unit (sel)</a>
+avoids the large jump in derivative of the relu activation function, by
+attaching an exponential</p></li>
+</ul>
+<p>An important consideration, especially for hidden layers, is that it should be
+avoided that the optimisation can end up in a region where the gradients are
+too small, or too large; it should especially not be in such a region with
+the typical values from the weight initialization.
+This happens very easily when stacking several sigmoid layers: if the weights
+in any layer end up in the nearly flat region, it is quite hard to get back
+out of there and to find the minimum.
+With relu hidden layers this is much less of a problem, which is one of the
+reasons why they are some common in deep learning.</p>
+<p>On the other hand, there should be enough non-linearity in the network to
+be able to adapt to the structure in the training sample.</p>
+</div>
+<div class="section" id="feature-engineering">
+<h2>Feature engineering</h2>
+<p>As can quickly be seen in the <a class="reference external" href="https://playground.tensorflow.org">Tensorflow playground</a>, a deep neural network
+may be able to learn any structure in the input data, but some extra input
+features based on other knowledge of the data can make a huge difference.</p>
+<p>In addition, neural networks are rather sensitive to the typical numerical
+values of inputs, so making sure that they are of order one is usually a good
+idea.</p>
+</div>
+<div class="section" id="architecture-examples">
+<h2>Architecture examples</h2>
+<div class="section" id="convolutional-neural-networks">
+<h3>Convolutional neural networks</h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network#Pooling">Convolutional neural networks</a> are often used for image recognition tasks.
+They use an interesting form of weight sharing: a convolutional layer applies
+a function on the values of a group of adjacent pixels (e.g. 2x2, 3x3, or
+larger), and does that every such group in the input (with the same function).
+They are typically followed by pooling layers that take the maximum or average
+of these outputs over the image, which makes that they recognize local features
+independently of where those are in the image (e.g. objects in a picture).</p>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png">
+</div>
+<div class="section" id="recurrent-neural-networks">
+<h3>Recurrent neural networks</h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent neural networks</a> do not take a fixed number of inputs, but a
+sequence of (fixed-size) inputs, and are often used in applications like speech
+or handwriting recognition.
+They typically have one network unit that takes one input at a time, and passes
+some of its outputs as inputs along with the next input element, thus creating
+internal memory of the network.
+One of the main challenges is to do so without the gradients getting too small
+or too big, because they pass through the network as many times as there are
+elements in the input sequence.
+A well-known solution to this is the
+<a class="reference external" href="https://en.wikipedia.org/wiki/Long_short-term_memory">LSTM</a> cell.</p>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png"><p>Graph neural networks are a more general class of neural networks that take
+structured data of variable size, and with more complex relations than being
+elements of a list, as input.</p>
+</div>
+<div class="section" id="generative-adversarial-networks">
+<h3>Generative adversarial networks</h3>
+<p><a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png">Generative adversarial networks</a> solve a slightly different problem: how to
+generate data that looks like the input.
+To do so, two networks are trained, a generator that takes random number as
+input, and produes an output (e.g. image) from them, and a discriminator
+network that is trained to distinguish between the real training sample and
+the generated one.
+They are trained with opposite loss functions: the generator tries to make
+examples that the discriminator cannot tell apart from the real ones, while
+the discriminator tries to distinguish them.
+Both are trained together, after some training step of the generator, the
+discriminator is updated; training can be tricky, it is important that the
+discriminator always stays close to optimal, such that it gives the right
+feedback to the generator.</p>
+</div>
+<div class="section" id="an-example-of-unsupervised-learning-autoencoders">
+<h3>An example of unsupervised learning: autoencoders</h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Autoencoder">Autoencoders</a> can be used to learn a lower-dimensional representation of
+the data, or perform (lossy) compression.
+They consist of a neural network that is mirrored around a hidden layer with
+fewer nodes than the input, and are trained for the output nodes to approximate
+the input nodes as closely as possible.</p>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png">
+</div>
+</div>
+<div class="section" id="diagnostics">
+<h2>Diagnostics</h2>
+<p>A big advantage of modern machine learning frameworks like Tensorflow is that,
+in addition to making training and inference efficienty, they provide easy to
+all internal values, because everything is (or looks like) a simple python
+object.
+Standard graphical tools like <a class="reference external" href="https://www.tensorflow.org/tensorboard">TensorBoard</a> are very useful, but if something
+specific is needed, it can often also be done with a few lines of code; the
+<code class="docutils literal">Model.fit</code> function for instance allows for callbacks, functions that are
+called during training.</p>
+</div>
+</div>
+    </section></article><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
+            
+        </footer>
+</div>
+    </div>
+    <label for="sidebar-checkbox" class="sidebar-toggle"></label>
+    
+    
+    
+            <script src="../../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+    moment.locale("en");
+    fancydates(0, "YYYY-MM-DD HH:mm");
+    </script><!-- end fancy dates -->
+</body>
+</html>

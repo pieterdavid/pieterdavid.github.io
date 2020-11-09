@@ -16,8 +16,8 @@ Table of contents
 
 - `A brief introduction to machine learning <mlintro.html>`_
 - `A more technical introduction to Tensorflow <tfprimer.html>`_
-- `Other building blocks and architectures <nnarchitectureexamples.html>`_
-- An exercise with a slightly more interesting problem
+- `Other building blocks and architectures <morenningredients.html>`_
+- `Your turn: an exercise <exercise1.html>`_
 
 To make it more interactive
 ---------------------------
@@ -26,6 +26,15 @@ While not absolutely essential, it is nice if you can try some things yourself
 (time permitting, there are also some exercises), so if possible you should 
 try to set up an environment where you can play a bit with Tensorflow_ (ideally
 before the training, to save a bit of time).
+
+Using Colaboratory_
+'''''''''''''''''''
+
+If you have a Google account, you can use Colaboratory_ to interactively edit
+and run notebooks.
+The environment is meant for machine learning, so no additional setup is
+required (resources are not guaranteed, but likely sufficient for anything we
+will do this afternoon).
 
 On manneback
 ''''''''''''
@@ -102,15 +111,6 @@ The badge above will launch a binder_ session with an environment prepared
 for the exercises.
 Resources will be limited, so some of the larger networks may not finish
 training.
-
-Using Colaboratory_
-'''''''''''''''''''
-
-If you have a Google account, you can use Colaboratory_ to interactively edit
-and run notebooks.
-The environment is meant for machine learning, so no additional setup is
-required (resources are not guaranteed, but likely sufficient for anything we
-will do this afternoon).
 
 Locally
 '''''''
