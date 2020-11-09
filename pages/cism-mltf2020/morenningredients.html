@@ -102,14 +102,15 @@ reasons why they are some common in deep learning.</p>
 <p>On the other hand, there should be enough non-linearity in the network to
 be able to adapt to the structure in the training sample.</p>
 </div>
-<div class="section" id="feature-engineering">
-<h2>Feature engineering</h2>
+<div class="section" id="preprocessing-and-feature-engineering">
+<h2>Preprocessing and feature engineering</h2>
 <p>As can quickly be seen in the <a class="reference external" href="https://playground.tensorflow.org">Tensorflow playground</a>, a deep neural network
 may be able to learn any structure in the input data, but some extra input
 features based on other knowledge of the data can make a huge difference.</p>
 <p>In addition, neural networks are rather sensitive to the typical numerical
 values of inputs, so making sure that they are of order one is usually a good
-idea.</p>
+idea (e.g. by shifting or rescaling them by a constant factor), this is called
+preprocessing.</p>
 </div>
 <div class="section" id="architecture-examples">
 <h2>Architecture examples</h2>

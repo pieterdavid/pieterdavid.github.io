@@ -105,8 +105,8 @@ and to be familiar with using SSH and the command line) if you have a stable
 internet connection is to open a terminal and launch an interactive job with slurm on the
 <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Computing/index.html#id1">Manneback</a> cluster.</p>
 <p>First connect to the interactive node:</p>
-<pre class="code sh"><a name="rest_code_a04a20cd6bd34a50be2dc51e172b67f5-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
-<a name="rest_code_a04a20cd6bd34a50be2dc51e172b67f5-2"></a>ssh manneback.cism.ucl.ac.be
+<pre class="code sh"><a name="rest_code_c49a13c501e046288480dc02f627b019-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
+<a name="rest_code_c49a13c501e046288480dc02f627b019-2"></a>ssh manneback.cism.ucl.ac.be
 </pre>
 <p>We will in any case launch an interactive job on the worker (such that we
 don't all compete for resources on the same machine), but there are two options:
@@ -115,11 +115,11 @@ notebook (and view some figures) from the browser on your personal computer.</p>
 <p>This needs a tunnel to manneback, which can be set up with <a class="reference external" href="https://sshuttle.readthedocs.io/en/stable/">sshuttle</a> following
 the <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Other/index.html#jupyter">CISM instructions</a>,
 and changing the <code class="docutils literal">srun</code> command to</p>
-<pre class="code sh"><a name="rest_code_5df1a23744bb44799eac4bf3826afe89-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
+<pre class="code sh"><a name="rest_code_73210c8be1574a749c2b049b2e14df3c-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
 </pre>
 <p>which will run</p>
-<pre class="code sh"><a name="rest_code_fa4e28f6b9394df9b825073a69b8119b-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
-<a name="rest_code_fa4e28f6b9394df9b825073a69b8119b-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
+<pre class="code sh"><a name="rest_code_cf36f7aa91b04da2b6e3e33ac736d295-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
+<a name="rest_code_cf36f7aa91b04da2b6e3e33ac736d295-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
 </pre>
 <p>in an interactive slurm job: source an environment setup script, and launch
 a <a class="reference external" href="http://jupyter.org">Jupyter</a> kernel..
@@ -132,15 +132,15 @@ Thanks to the tunnel you can open this in a web browser on your laptop/desktop
 <p>To check that everything is working correctly, you can create a test notebook
 somewhere in your home directory, and try the following to check that
 <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> is correctly set up:</p>
-<pre class="code python"><a name="rest_code_2460a66ff9d04567a919204f2e99043d-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<a name="rest_code_2460a66ff9d04567a919204f2e99043d-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_b2f4c8e9e64d45959503d78716c3d31d-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<a name="rest_code_b2f4c8e9e64d45959503d78716c3d31d-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
 </pre>
 <p>The main advantage of the notebook over an <a class="reference external" href="http://ipython.org">IPython</a> session is that this gives
 an inline figure:</p>
-<pre class="code python"><a name="rest_code_ad79371df14648b49b4c6e97cc4ab762-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a name="rest_code_ad79371df14648b49b4c6e97cc4ab762-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<a name="rest_code_ad79371df14648b49b4c6e97cc4ab762-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<a name="rest_code_ad79371df14648b49b4c6e97cc4ab762-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<pre class="code python"><a name="rest_code_a7cd368347e144af8a9691fdeb817543-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a name="rest_code_a7cd368347e144af8a9691fdeb817543-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<a name="rest_code_a7cd368347e144af8a9691fdeb817543-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<a name="rest_code_a7cd368347e144af8a9691fdeb817543-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre>
 </div>
 <div class="section" id="using-binder">
@@ -159,16 +159,16 @@ python on your personal computer or elsewhere, you can also install <a class="re
 in a <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a> environment, or (preferably in a <a class="reference external" href="https://docs.conda.io/en/latest/">virtual environment</a>) with pip,
 more details can be found in the <a class="reference external" href="https://www.tensorflow.org/install">installation instructions</a>.</p>
 <p>With <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>, all you should need is this:</p>
-<pre class="code sh"><a name="rest_code_93fa781d4a3c4dfcbda9dda1230fc851-1"></a>conda config --add channels conda-forge <span class="c1"># if not already the case</span>
-<a name="rest_code_93fa781d4a3c4dfcbda9dda1230fc851-2"></a>conda create -n mltftraining2020 <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.3.0 <span class="nv">tensorboard</span><span class="o">=</span><span class="m">2</span>.3.0 ipython matplotlib ipykernel
-<a name="rest_code_93fa781d4a3c4dfcbda9dda1230fc851-3"></a>conda activate mltftraining2020
-<a name="rest_code_93fa781d4a3c4dfcbda9dda1230fc851-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
+<pre class="code sh"><a name="rest_code_96575083357e44648c311b62f434e594-1"></a>conda config --add channels conda-forge <span class="c1"># if not already the case</span>
+<a name="rest_code_96575083357e44648c311b62f434e594-2"></a>conda create -n mltftraining2020 <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.3.0 <span class="nv">tensorboard</span><span class="o">=</span><span class="m">2</span>.3.0 ipython matplotlib ipykernel
+<a name="rest_code_96575083357e44648c311b62f434e594-3"></a>conda activate mltftraining2020
+<a name="rest_code_96575083357e44648c311b62f434e594-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
 </pre>
 <p>And with virtualenv and pip:</p>
-<pre class="code sh"><a name="rest_code_7a0537fb6d7243a1b17a88c8be3fe6e4-1"></a>python -m venv mltftraining2020 <span class="c1"># pick a name</span>
-<a name="rest_code_7a0537fb6d7243a1b17a88c8be3fe6e4-2"></a><span class="nb">source</span> mltftraining2020/bin/activate
-<a name="rest_code_7a0537fb6d7243a1b17a88c8be3fe6e4-3"></a>pip install tensorflow tensorboard ipython matplotlib ipykernel
-<a name="rest_code_7a0537fb6d7243a1b17a88c8be3fe6e4-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
+<pre class="code sh"><a name="rest_code_1ed1217f1e704d489f424e52f0ed73ef-1"></a>python -m venv mltftraining2020 <span class="c1"># pick a name</span>
+<a name="rest_code_1ed1217f1e704d489f424e52f0ed73ef-2"></a><span class="nb">source</span> mltftraining2020/bin/activate
+<a name="rest_code_1ed1217f1e704d489f424e52f0ed73ef-3"></a>pip install tensorflow tensorboard ipython matplotlib ipykernel
+<a name="rest_code_1ed1217f1e704d489f424e52f0ed73ef-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
 </pre>
 <p>If you do not already have the <a class="reference external" href="http://jupyter.org">Jupyter</a> notebook server installed, you should
 add the <code class="docutils literal">notebook</code> package to the conda or pip install command.
@@ -179,7 +179,7 @@ which requires Python 3.5 or above.</p>
 on dockerhub as
 <a class="reference external" href="https://hub.docker.com/r/pieterdavid/cism-mltf2020-docker">pieterdavid/cism-mltf2020-docker</a>,
 and can be pulled with</p>
-<pre class="code sh"><a name="rest_code_5ad7187e22c24d2db505af9ffe22476c-1"></a>docker pull pieterdavid/cism-mltf2020-docker
+<pre class="code sh"><a name="rest_code_d72eb81b977e4475a184f15cfe92c589-1"></a>docker pull pieterdavid/cism-mltf2020-docker
 </pre>
 </div>
 </div>
