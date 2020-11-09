@@ -44,8 +44,8 @@ reasons why they are some common in deep learning.
 On the other hand, there should be enough non-linearity in the network to
 be able to adapt to the structure in the training sample.
 
-Feature engineering
--------------------
+Preprocessing and feature engineering
+-------------------------------------
 
 As can quickly be seen in the `Tensorflow playground`_, a deep neural network
 may be able to learn any structure in the input data, but some extra input
@@ -53,7 +53,8 @@ features based on other knowledge of the data can make a huge difference.
 
 In addition, neural networks are rather sensitive to the typical numerical
 values of inputs, so making sure that they are of order one is usually a good
-idea.
+idea (e.g. by shifting or rescaling them by a constant factor), this is called
+preprocessing.
 
 Architecture examples
 ---------------------
