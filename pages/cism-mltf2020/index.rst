@@ -25,16 +25,36 @@ To make it more interactive
 While not absolutely essential, it is nice if you can try some things yourself
 (time permitting, there are also some exercises), so if possible you should 
 try to set up an environment where you can play a bit with Tensorflow_ (ideally
-before the training, to save a bit of time).
+before the training, to save time).
 
 Using Colaboratory_
 '''''''''''''''''''
 
+.. image:: https://colab.research.google.com/assets/colab-badge.svg
+   :target: https://colab.research.google.com/github/pieterdavid/cism-mltf2020
+
 If you have a Google account, you can use Colaboratory_ to interactively edit
-and run notebooks.
-The environment is meant for machine learning, so no additional setup is
-required (resources are not guaranteed, but likely sufficient for anything we
-will do this afternoon).
+and run notebooks by clicking the badge above.
+It will load the notebooks from the
+`Github repository <https://github.com/pieterdavid/cism-mltf2020>`_,
+so it will not be able to save there, but you can save a copy in your Google Drive space.
+
+The environment is meant for machine learning (with Tensorflow_), so no
+additional setup is required (resources are not guaranteed, but likely
+sufficient for anything we will do this afternoon).
+
+Using binder_
+'''''''''''''
+
+.. image:: https://mybinder.org/badge_logo.svg
+   :target: https://mybinder.org/v2/gh/pieterdavid/cism-mltf2020/main
+
+The badge above will launch a binder_ session with an environment prepared
+for the exercises.
+Resources will be limited, so some of the larger networks may not finish
+training.
+Please note that this also is a transient session, so if you want to keep
+the notebooks with your modifications you will have to download them.
 
 On manneback
 ''''''''''''
@@ -101,17 +121,6 @@ an inline figure:
    plt.plot(x, np.sin(x))
 
 
-Using binder_
-'''''''''''''
-
-.. image:: https://mybinder.org/badge_logo.svg
-   :target: https://mybinder.org/v2/gh/pieterdavid/cism-mltf2020-docker/main
-
-The badge above will launch a binder_ session with an environment prepared
-for the exercises.
-Resources will be limited, so some of the larger networks may not finish
-training.
-
 Locally
 '''''''
 
@@ -143,16 +152,17 @@ add the ``notebook`` package to the conda or pip install command.
 The last line installs a kernel that you can select to run the notebook with.
 
 The exercises assume that you are have at least version 2.1.0 of Tensorflow_,
-which requires Python 3.5 or above.
+which requires Python 3.5 or above (the binder_ and Colaboratory_ options above
+have the most recent version, 2.3.1).
 
 You could also reuse the docker image used by binder_ above, it is available
 on dockerhub as
-`pieterdavid/cism-mltf2020-docker <https://hub.docker.com/r/pieterdavid/cism-mltf2020-docker>`_,
+`pieterdavid/cism-mltf2020 <https://hub.docker.com/r/pieterdavid/cism-mltf2020>`_,
 and can be pulled with
 
 .. code-block:: sh
 
-   docker pull pieterdavid/cism-mltf2020-docker
+   docker pull pieterdavid/cism-mltf2020
 
 
 .. _indico page: https://indico.cism.ucl.ac.be/event/84/
