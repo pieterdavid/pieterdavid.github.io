@@ -75,7 +75,8 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>This page is part of the material for the <a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a> session of the <a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>, see the <a href="index.html">table of contents</a> for the other parts. The notebook can be downloaded with <a href="mlintro.ipynb">this link</a>.</em></p>
+<p><em>This page is part of the material for the <a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a> session of the <a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>, see the <a href="index.html">table of contents</a> for the other parts. The notebook can be downloaded with <a href="mlintro.ipynb">this link</a>.</em>
+<a href="https://colab.research.google.com/github/pieterdavid/cism-mltf2020/blob/main/tfprimer.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab"></a></p>
 <p>Tensorflow is a widely used library for machine learning, especially deep learning, both training and inference (evaluating trained neural networks on new data).
 It was developed by the Google Brain team, and is open source software.
 On the <a href="https://www.tensorflow.org">website</a> you will find many libraries and tools for common tasks related to machine learning, and a lot of training material and examples.</p>
@@ -280,10 +281,11 @@ Since Tensorflow 2.0, the default changed to use the "eager" mode, where the cal
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tensorboard
-<span class="c1"># the following line tells the extension where to find tensorboard</span>
-<span class="c1"># you will either not need, or have to change the path</span>
-<span class="c1"># To find the path: activate the conda / virtual environment, and run `which tensorboard`</span>
-<span class="o">%</span><span class="k">env</span> TENSORBOARD_BINARY=/home/pieter/miniconda3/envs/ceci_mltf/bin/tensorboard
+<span class="c1"># If not running on Colab, you may need to tell the extension</span>
+<span class="c1"># where to find the tensorboard executable like this.</span>
+<span class="c1"># To find the path: activate the conda / virtual environment,</span>
+<span class="c1"># and run `which tensorboard`</span>
+<span class="c1"># %env TENSORBOARD_BINARY=/home/pieter/miniconda3/envs/ceci_mltf/bin/tensorboard</span>
 </pre></div>
 
     </div>

@@ -75,7 +75,8 @@ MathJax.Hub.Config({
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p><em>This page is part of the material for the <a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a> session of the <a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>, see the <a href="index.html">table of contents</a> for the other parts. The notebook can be downloaded with <a href="mlintro.ipynb">this link</a>.</em></p>
+<p><em>This page is part of the material for the <a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a> session of the <a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>, see the <a href="index.html">table of contents</a> for the other parts. The notebook can be downloaded with <a href="mlintro.ipynb">this link</a>.</em>
+<a href="https://colab.research.google.com/github/pieterdavid/cism-mltf2020/blob/main/mlintro.ipynb"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Colab"></a></p>
 <blockquote>
 <p>Machine learning is the study of computer algorithms that improve automatically through experience.</p>
 </blockquote>
@@ -603,11 +604,11 @@ There are several strategies to try and prevent mitigate overfitting (this is ca
 <li>L1 and L2 regularization add a penalty term to the loss function, which is the sum of absolute values of all the weights (L1), or the sum of the squares of the weights (L2). They can be applied to all or some layers.</li>
 <li>dropout regularization randomly sets the inputs to some nodes (typically 50%, for one or more of the hidden layers) to zero during training. It reduces the capacity of the network and makes training slower, but it will make the subsequent nodes "see" a more diverse input sample, and make it less rewarding to learn small coincidences rather than the main features of the training sample</li>
 </ul>
-<p>A simple, and very common, way to check for overfitting, is to not use a (randomly selected) part of the training sample, but keep it as a test sample: by construction they are from the same distribution that the network should learn, so if the performance is significantly different between the one used for training and the test sample, that is an indication of overtraining.
-One check is to calculate the value of the loss on the test sample after every epoch of the training.
-The typical pattern that arises then is that the training and test loss follow the same trend at first, and after training for a sufficiently long time the "test loss" stays at the same value, or even goes up, while the training loss keeps decreasing; the training should obviously be stopped before.</p>
-<p>The disadvantage of a test sample is that some data is lost for training.
-A possible way around that is <a href="https://en.wikipedia.org/wiki/Cross-validation_%28statistics%29">cross-validation</a>, where the sample is split in different parts, and a training is done with each of the parts left out, as a test sample; if that does not show any problems, the different estimators can be averaged.</p>
+<p>A simple, and very common, way to check for overfitting, is to not use a (randomly selected) part of the training sample, but keep it as a validation sample: by construction they are from the same distribution that the network should learn, so if the performance is significantly different between the one used for training and the validation sample, that is an indication of overtraining.
+One check is to calculate the value of the loss on the validation sample after every epoch of the training.
+The typical pattern that arises then is that the training and validation loss follow the same trend at first, and after training for a sufficiently long time the "validation loss" stays at the same value, or even goes up, while the training loss keeps decreasing; the training should obviously be stopped before.</p>
+<p>The disadvantage of a validation sample is that some data is lost for training.
+A possible way around that is <a href="https://en.wikipedia.org/wiki/Cross-validation_%28statistics%29">cross-validation</a>, where the sample is split in different parts, and a training is done with each of the parts left out, as a validation sample; if that does not show any problems, the different estimators can be averaged.</p>
 <h3 id="Classification-problems">Classification problems<a class="anchor-link" href="mlintro.html#Classification-problems">¶</a>
 </h3>
 <p>When we turn from <em>regression</em> (estimating the value(s) of a function, given the inputs) to <em>classification</em>, we will need to change a few things.
