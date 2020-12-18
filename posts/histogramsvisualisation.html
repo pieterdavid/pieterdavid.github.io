@@ -2,16 +2,15 @@
 <html prefix="" lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="description" content="Pieter's blog">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Pieter David's blog | Pieter David's blog</title>
-<link href="assets/css/all.css" rel="stylesheet" type="text/css">
-<link href="assets/css/ipython.min.css" rel="stylesheet" type="text/css">
-<link href="assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
+<title>A few remarks about drawing histograms | Pieter David's blog</title>
+<link href="../assets/css/all.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/ipython.min.css" rel="stylesheet" type="text/css">
+<link href="../assets/css/nikola_ipython.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.5/css/fork-awesome.min.css" integrity="sha256-P64qV9gULPHiZTdrS1nM59toStkgjM0dsf5mK/UwBV4=" crossorigin="anonymous">
 <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&amp;display=swap" rel="stylesheet">
-<link rel="alternate" type="application/rss+xml" title="RSS" href="rss.xml">
-<link rel="canonical" href="https://pieterdavid.github.io/">
+<link rel="alternate" type="application/rss+xml" title="RSS" href="../rss.xml">
+<link rel="canonical" href="https://pieterdavid.github.io/posts/histogramsvisualisation.html">
 <script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
@@ -24,7 +23,14 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/histogramsvisualisation.html" type="text/html">
+</script><!--[if lt IE 9]><script src="../assets/js/html5.js"></script><![endif]--><meta name="author" content="Pieter David">
+<link rel="prev" href="cmssw-gitgrepview/" title="Searching and browsing CMSSW: use git" type="text/html">
+<meta property="og:site_name" content="Pieter David's blog">
+<meta property="og:title" content="A few remarks about drawing histograms">
+<meta property="og:url" content="https://pieterdavid.github.io/posts/histogramsvisualisation.html">
+<meta property="og:description" content="For all the time we spend in (collider) high-energy physics on filling and drawing histograms, it is a bit surprising that the way histograms are drawn by default in ROOT, and some of its peculiaritie">
+<meta property="og:type" content="article">
+<meta property="article:published_time" content="2020-12-18T14:13:00+01:00">
 </head>
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -32,10 +38,10 @@ MathJax.Hub.Config({
             styles, `#sidebar-checkbox` for behavior. -->
     <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox"><!-- Toggleable sidebar --><div class="sidebar" id="sidebar">
 
-        <nav role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="."><i class="fa fa-2x fa-fw fa-home"></i> Home</a>
-        </nav><nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="archive.html">Archive</a>
-        <a class="sidebar-nav-item" href="categories/">Tags</a>
-        <a class="sidebar-nav-item" href="rss.xml">RSS feed</a>
+        <nav role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="../"><i class="fa fa-2x fa-fw fa-home"></i> Home</a>
+        </nav><nav id="menu" role="navigation" class="sidebar-nav"><a class="sidebar-nav-item" href="../archive.html">Archive</a>
+        <a class="sidebar-nav-item" href="../categories/">Tags</a>
+        <a class="sidebar-nav-item" href="../rss.xml">RSS feed</a>
     
     
     </nav>
@@ -56,20 +62,23 @@ MathJax.Hub.Config({
 
       <div class="container content" id="content">
         
-
-<div class="posts">
-    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/histogramsvisualisation.html" class="u-url">A few remarks about drawing histograms</a></h1>
+<article class="post-text h-entry hentry postpage" itemscope="itemscope" itemtype="http://schema.org/BlogPosting"><header><h1 class="post-title p-name entry-title" itemprop="headline">
+      <a href="https://pieterdavid.github.io/posts/histogramsvisualisation.html" class="u-url">A few remarks about drawing histograms</a>
+</h1>
         <div class="metadata">
-            <p class="dateline"><a href="posts/histogramsvisualisation.html" rel="bookmark"><time class="post-date published dt-published" datetime="2020-12-18T14:13:00+01:00" title="2020-12-18 14:13">2020-12-18 14:13</time></a></p>
+        <meta itemprop="inLanguage" content="en">
+<p class="dateline">
+            <time class="post-date published dt-published" datetime="2020-12-18T14:13:00+01:00" itemprop="datePublished" title="2020-12-18 14:13">2020-12-18 14:13</time></p>
                 <p class="commentline">
         
-        <a href="posts/histogramsvisualisation.html#isso-thread">Comments</a>
+        <a href="histogramsvisualisation.html#isso-thread">Comments</a>
 
 
         </p>
 </div>
-    </header><div class="e-content entry-content">
-    <div>
+        
+
+    </header><section class="e-content entry-content" itemprop="articleBody text"><div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="prompt input_prompt">
 </div>
@@ -77,7 +86,7 @@ MathJax.Hub.Config({
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For all the time we spend in (collider) high-energy physics on filling and drawing histograms, it is a bit surprising that the way histograms are drawn by default in ROOT, and some of its peculiarities, are rarely discussed.
 My main point is that with variable-sized binnings, things are less obvious and natural than they are often assumed to be, and since this comes up in discussions with colleagues from time to time, I decided to make a few plots, and write up why I keep pointing this out.</p>
-<h3 id="Bin-area-or-height?">Bin area or height?<a class="anchor-link" href="posts/histogramsvisualisation.html#Bin-area-or-height?">¶</a>
+<h3 id="Bin-area-or-height?">Bin area or height?<a class="anchor-link" href="histogramsvisualisation.html#Bin-area-or-height?">¶</a>
 </h3>
 <p>For a definition of a histogram, we can use the <a href="https://en.wikipedia.org/wiki/Histogram">Wikipedia page</a>:</p>
 <blockquote>
@@ -330,7 +339,7 @@ In my (not very polished) <a href="https://github.com/pieterdavid/mplbplot">mplb
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Also note that, when dividing by the bin width, the integral of the histogram (taking into account the units on the x axis) matches the actual integral of the histogram.
 This is true independently of the binning choice then, which makes it easier to estimate how many counts there are in a part of the distribution (by multiply the x range, instead of the number of bins, with the height).</p>
-<h3 id="Rebinning-or-transforming-the-x-axis-variable?">Rebinning or transforming the x axis variable?<a class="anchor-link" href="posts/histogramsvisualisation.html#Rebinning-or-transforming-the-x-axis-variable?">¶</a>
+<h3 id="Rebinning-or-transforming-the-x-axis-variable?">Rebinning or transforming the x axis variable?<a class="anchor-link" href="histogramsvisualisation.html#Rebinning-or-transforming-the-x-axis-variable?">¶</a>
 </h3>
 <p>A consequence of the above is that from time to time, rebinning is used to get distributions into a specific shape, e.g. to obtain a flat distribution.
 In my opinion this only adds to the confusion above: the shape of a distribution should not depend on the binning choice.
@@ -444,115 +453,49 @@ If the distribution in the plane is peaks around the reference point and falls w
 </div>
 </div>
 </div>
-    </div>
-    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/cmssw-gitgrepview/" class="u-url">Searching and browsing CMSSW: use git</a></h1>
-        <div class="metadata">
-            <p class="dateline"><a href="posts/cmssw-gitgrepview/" rel="bookmark"><time class="post-date published dt-published" datetime="2019-02-11T09:15:00+01:00" title="2019-02-11 09:15">2019-02-11 09:15</time></a></p>
-                <p class="commentline">
+    </section><aside class="sharing no-print"><a href="#content" aria-label="Post beginning">
+       <i class="fa fa-2x fa-fw fa-arrow-circle-up" aria-hidden="true" title="Post beginning"></i>
+    </a>
+    <a href="https://pieterdavid.github.io/posts/cmssw-gitgrepview/" rel="prev" title="Searching and browsing CMSSW: use git">
+       <i class="fa fa-2x fa-fw fa-arrow-circle-left" aria-hidden="true" title="Previous post: Searching and browsing CMSSW: use git"></i>
+    </a>
+    <span class="post-sharing">
+     <a href="http://twitter.com/share?text=A+few+remarks+about+drawing+histograms&amp;url=https%3A%2F%2Fpieterdavid.github.io%2Fposts%2Fhistogramsvisualisation.html" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
+       <i class="fa fa-2x fa-fw fa-twitter" aria-hidden="true" title="Share on Twitter">
+     </i></a>
+     <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpieterdavid.github.io%2Fposts%2Fhistogramsvisualisation.html" onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;" aria-label="Share on Facebook">
+       <i class="fa fa-2x fa-fw fa-facebook" style="margin-left: -8px" aria-hidden="true" title="Share of Facebook">
+     </i></a>
+     <a href="https://wa.me/?text=https%3A%2F%2Fpieterdavid.github.io%2Fposts%2Fhistogramsvisualisation.html" aria-label="Share on WhatsApp">
+       <i class="fa fa-2x fa-fw fa-whatsapp" style="margin-left: -8px" aria-hidden="true" title="Share on WhatsApp">
+     </i></a>
+     </span>
+</aside><div itemprop="author" itemscope itemtype="http://schema.org/Person">
+<footer class="byline author author-bio vcard"><hr>
+<meta itemprop="image" content="https://avatars0.githubusercontent.com/u/8883677?s=460&amp;v=4">
+<div class="author-image" style="background: url(https://avatars0.githubusercontent.com/u/8883677?s=460&amp;v=4)"></div>
+     <h3 class="byline-name fn" itemprop="name">Pieter David
+        <span class="post-sharing">
+            <a href="mailto:pieter(point)david(at)SPAMNOTgmail(point)com?subject=A%20few%20remarks%20about%20drawing%20histograms" aria-label="Email author">
+            <i class="fa fa-fw fa-envelope" aria-hidden="true" title="Email author">
+            </i></a>
+        </span>
+        <span class="post-sharing">
+            <a href="http://twitter.com/pieterdavid_" target="_blank" arial-label="Go to Twitter"> <i class="fa fa-fw fa-twitter" aria-hidden="true" title="Twitter"></i></a>
+            <a href="https://www.linkedin.com/in/pieter-david-a04a77ab/" target="_blank" arial-label="Go to LinkedIn"> <i class="fa fa-fw fa-linkedin" aria-hidden="true" title="LinkedIn"></i></a>
+            <a href="http://github.com/pieterdavid" target="_blank" arial-label="Go to GitHub"> <i class="fa fa-fw fa-github" aria-hidden="true" title="GitHub"></i></a>
+        </span>
+     </h3>
+     <p><i class="fas fa-map-marker"></i> Brussels, Belgium</p>
+</footer>
+</div>
+
+
+        <section class="comments hidden-print"><h2>Comments</h2>
         
-        <a href="posts/cmssw-gitgrepview/#isso-thread">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p><a class="reference external" href="https://cms-sw.github.io/">CMSSW</a>, the software that the CMS experiment uses to process collision data,
-from the detector readout to a format suitable for analysis,
-is contained in one big git repository, <a class="reference external" href="https://github.com/cms-sw/cmssw">cms-sw/cmssw.git</a>.
-Since documentation is not always kept up to date, or missing some details,
-it occurs quite often that the only way to figure out how some numbers came about
-is to check the code itself—this is even more the case when doing development.</p>
-<p>For saving time during development, git's <a class="reference external" href="https://git-scm.com/docs/git-read-tree#_sparse_checkout">sparse checkout</a> feature is heavily used, such that
-only the minimally required (modified, and depending) packages are checked out and built.
-The other targets—mostly shared libraries, executables, and python modules—are taken from the corresponding release area, which is distributed through
-the <a class="reference external" href="https://cvmfs.readthedocs.io/">CernVM-FS (or cvmfs)</a> filesystem.
-Since also the git objects are distributed in this way (to all CMS colleagues who have not
-already done so: set <code class="docutils literal"><span class="pre">CMSSW_GIT_REFERENCE=/cvmfs/cms.cern.ch/cmssw.git.daily</span></code> when working
-on a machine with cvmfs), the cost of setting up a working area is very small (it typically
-takes a few seconds to run <code class="docutils literal">cmsrel</code>).</p>
-<p>A less known feature of such a setup is that it also allows for very fast (and flexible)
-searching of the full repository, parts of it, and the complete git history, with
-<code class="docutils literal">git grep</code> and <code class="docutils literal">git show</code>. The rest of this post describes my favourite tricks and aliases.</p>
-<div class="section" id="git-grep-and-ack">
-<h2>git grep and ack</h2>
-<p>There are many online introductions to using <code class="docutils literal">git grep</code>, see e.g. the
-<a class="reference external" href="http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/">"Search a git repo like a ninja" post by Travis Jeffery</a>,
-which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
-(if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
-I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
-<pre class="code ini"><a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-1"></a><span class="k">[alias]</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-3"></a><span class="k">[grep]</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-5"></a><span class="s">  lineNumber = true</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-6"></a><span class="s">  color = auto</span>
-</pre>
-<p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
-<pre class="code sh"><a name="rest_code_ae42fb8d2bfa4d0eb4859234106495c3-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
-</pre>
-<p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
-and a part of the repository that should be searched, respectively, are optional.</p>
-<p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
-variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_3a7188b5970e4b2d8525bc51a5d5c59a-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
-</pre>
-</div>
-<div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting">
-<h2>git show with vim as a pager, and syntax higlighting</h2>
-<p>Nothing too special by itself, but a useful helper command to know about: <code class="docutils literal">git show revision:path</code>
-can be used as the equivalent of <code class="docutils literal">cat</code>, <code class="docutils literal">less</code> (or your favourite plain-text pager)
-for any revision of any file (also when they are not in the working directory).</p>
-<p>Of course <code class="docutils literal">cat</code> and <code class="docutils literal">less</code> are not the most convenient tools to browse large source files.
-vim can be used as a pager (with the <a class="reference external" href="https://github.com/vim/vim/blob/master/runtime/macros/less.vim">less.vim</a>
-script). Syntax highlighting does not work out of the box, however,
-because <code class="docutils literal">ftplugin</code> mostly relies on the filename extension for detecting the filetype.
-But when calling <code class="docutils literal">git show</code>, we have a filename, so we can use a trick:
-first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
-This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
-<code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
-</pre>
-<p>The following git alias (using the trick from
-<a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
-will run the script on the output of <code class="docutils literal">git show</code></p>
-<pre class="code ini"><a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-1"></a><span class="k">[alias]</span>
-<a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
-</pre>
-<p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
-(in this case C++) syntax highlighting.</p>
-</div>
-</div>
-    </div>
-    </article><article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/welcome/" class="u-url">Welcome to my blog</a></h1>
-        <div class="metadata">
-            <p class="dateline"><a href="posts/welcome/" rel="bookmark"><time class="post-date published dt-published" datetime="2019-01-19T15:53:09+01:00" title="2019-01-19 15:53">2019-01-19 15:53</time></a></p>
-                <p class="commentline">
         
-        <a href="posts/welcome/#isso-thread">Comments</a>
-
-
-        </p>
-</div>
-    </header><div class="e-content entry-content">
-    <div>
-<p>Hello,</p>
-<p>I am a particle physicist, currently working on the CMS experiment at the CERN LHC (previously LHCb).
-Most of my work is about data analysis, and detector and reconstruction software.
-Physics results go into papers, but the more technical bits of the job
-(tools, techniques, computing tricks) often do not, so I made this blog to share some of those
-(and maybe some other things that come up) with colleagues near and far, and with anyone who finds them useful or interesting.</p>
-<p>Happy reading!</p>
-</div>
-    </div>
-    </article>
-</div>
-
-
-
-        
-        <script src="https://pietersblogcomments.pythonanywhere.com/js/count.min.js" data-isso="https://pietersblogcomments.pythonanywhere.com/" data-isso-lang="en"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
+        <div data-title="A few remarks about drawing histograms" id="isso-thread"></div>
+        <script src="https://pietersblogcomments.pythonanywhere.com/js/embed.min.js" data-isso="https://pietersblogcomments.pythonanywhere.com/" data-isso-lang="en"></script></section><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML" integrity="sha384-3lJUsx1TJHt7BA4udB5KPnDrlkO8T6J6v/op7ui0BbCjvZ9WqV4Xm6DTP6kQ/iBH" crossorigin="anonymous"></script><script type="text/x-mathjax-config">
 MathJax.Hub.Config({
     tex2jax: {
         inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -564,7 +507,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
+</script></article><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
             
         </footer>
 </div>
@@ -573,7 +516,7 @@ MathJax.Hub.Config({
     
     
     
-            <script src="assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
+            <script src="../assets/js/all-nocdn.js"></script><!-- fancy dates --><script>
     moment.locale("en");
     fancydates(0, "YYYY-MM-DD HH:mm");
     </script><!-- end fancy dates -->

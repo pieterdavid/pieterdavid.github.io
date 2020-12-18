@@ -25,6 +25,7 @@ MathJax.Hub.Config({
 });
 </script><!--[if lt IE 9]><script src="../../assets/js/html5.js"></script><![endif]--><meta name="author" content="Pieter David">
 <link rel="prev" href="../welcome/" title="Welcome to my blog" type="text/html">
+<link rel="next" href="../histogramsvisualisation.html" title="A few remarks about drawing histograms" type="text/html">
 <meta property="og:site_name" content="Pieter David's blog">
 <meta property="og:title" content="Searching and browsing CMSSW: use git">
 <meta property="og:url" content="https://pieterdavid.github.io/posts/cmssw-gitgrepview/">
@@ -106,21 +107,21 @@ searching of the full repository, parts of it, and the complete git history, wit
 which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
 (if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
 I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
-<pre class="code ini"><a name="rest_code_422f3cb686514e4a9a32287d32310cad-1"></a><span class="k">[alias]</span>
-<a name="rest_code_422f3cb686514e4a9a32287d32310cad-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_422f3cb686514e4a9a32287d32310cad-3"></a><span class="k">[grep]</span>
-<a name="rest_code_422f3cb686514e4a9a32287d32310cad-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_422f3cb686514e4a9a32287d32310cad-5"></a><span class="s">  lineNumber = true</span>
-<a name="rest_code_422f3cb686514e4a9a32287d32310cad-6"></a><span class="s">  color = auto</span>
+<pre class="code ini"><a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-1"></a><span class="k">[alias]</span>
+<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
+<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-3"></a><span class="k">[grep]</span>
+<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-5"></a><span class="s">  lineNumber = true</span>
+<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-6"></a><span class="s">  color = auto</span>
 </pre>
 <p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
-<pre class="code sh"><a name="rest_code_b4bec37682a44c45b7cb9a9fd9843d91-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
+<pre class="code sh"><a name="rest_code_ae42fb8d2bfa4d0eb4859234106495c3-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
 </pre>
 <p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.</p>
 <p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
 variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_2aa239b83f88405493c89752e4cc7589-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+<pre class="code sh"><a name="rest_code_3a7188b5970e4b2d8525bc51a5d5c59a-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 </pre>
 </div>
 <div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting">
@@ -136,14 +137,14 @@ But when calling <code class="docutils literal">git show</code>, we have a filen
 first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
 <code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_22895e6b49ca4191854b18627d172e18-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_22895e6b49ca4191854b18627d172e18-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
+<pre class="code sh"><a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
+<a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
 </pre>
 <p>The following git alias (using the trick from
 <a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
 will run the script on the output of <code class="docutils literal">git show</code></p>
-<pre class="code ini"><a name="rest_code_59c57f24a5e2462e8aeafb2cfc5ee939-1"></a><span class="k">[alias]</span>
-<a name="rest_code_59c57f24a5e2462e8aeafb2cfc5ee939-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
+<pre class="code ini"><a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-1"></a><span class="k">[alias]</span>
+<a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
 </pre>
 <p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
 (in this case C++) syntax highlighting.</p>
@@ -154,6 +155,9 @@ will run the script on the output of <code class="docutils literal">git show</co
     </a>
     <a href="https://pieterdavid.github.io/posts/welcome/" rel="prev" title="Welcome to my blog">
        <i class="fa fa-2x fa-fw fa-arrow-circle-left" aria-hidden="true" title="Previous post: Welcome to my blog"></i>
+    </a>
+    <a href="https://pieterdavid.github.io/posts/histogramsvisualisation.html" rel="next" title="Next post: A few remarks about drawing histograms" aria-label="Next post: A few remarks about drawing histograms">
+       <i class="fa fa-2x fa-fw fa-arrow-circle-right" aria-hidden="true"></i>
     </a>
     <span class="post-sharing">
      <a href="http://twitter.com/share?text=Searching+and+browsing+CMSSW%3A+use+git&amp;url=https%3A%2F%2Fpieterdavid.github.io%2Fposts%2Fcmssw-gitgrepview%2F" onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;" aria-label="Share on Twitter">
