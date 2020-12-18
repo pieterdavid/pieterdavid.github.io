@@ -24,7 +24,7 @@ MathJax.Hub.Config({
         styles: {'.MathJax_Display': {"margin": 0}}
     }
 });
-</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/histogramsvisualisation.html" type="text/html">
+</script><!--[if lt IE 9]><script src="assets/js/html5.js"></script><![endif]--><link rel="prefetch" href="posts/histogramsvisualisation/" type="text/html">
 </head>
 <body>
     <a href="#content" class="sr-only sr-only-focusable">Skip to main content</a>
@@ -58,12 +58,12 @@ MathJax.Hub.Config({
         
 
 <div class="posts">
-    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/histogramsvisualisation.html" class="u-url">A few remarks about drawing histograms</a></h1>
+    <article class="post h-entry post-text"><header><h1 class="post-title p-name"><a href="posts/histogramsvisualisation/" class="u-url">A few remarks about drawing histograms</a></h1>
         <div class="metadata">
-            <p class="dateline"><a href="posts/histogramsvisualisation.html" rel="bookmark"><time class="post-date published dt-published" datetime="2020-12-18T14:13:00+01:00" title="2020-12-18 14:13">2020-12-18 14:13</time></a></p>
+            <p class="dateline"><a href="posts/histogramsvisualisation/" rel="bookmark"><time class="post-date published dt-published" datetime="2020-12-18T14:13:00+01:00" title="2020-12-18 14:13">2020-12-18 14:13</time></a></p>
                 <p class="commentline">
         
-        <a href="posts/histogramsvisualisation.html#isso-thread">Comments</a>
+        <a href="posts/histogramsvisualisation/#isso-thread">Comments</a>
 
 
         </p>
@@ -76,8 +76,8 @@ MathJax.Hub.Config({
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For all the time we spend in (collider) high-energy physics on filling and drawing histograms, it is a bit surprising that the way histograms are drawn by default in ROOT, and some of its peculiarities, are rarely discussed.
-My main point is that with variable-sized binnings, things are less obvious and natural than they are often assumed to be, and since this comes up in discussions with colleagues from time to time, I decided to make a few plots, and write up why I keep pointing this out.</p>
-<h3 id="Bin-area-or-height?">Bin area or height?<a class="anchor-link" href="posts/histogramsvisualisation.html#Bin-area-or-height?">¶</a>
+The main point I want to make is that in the case of variable-sized binnings that is less obvious and natural than is often assumed, and since this comes up in discussions with colleagues from time to time, I decided to make a few plots, and write up why I keep pointing this out.</p>
+<h3 id="Bin-area-or-height?">Bin area or height?<a class="anchor-link" href="posts/histogramsvisualisation/#Bin-area-or-height?">¶</a>
 </h3>
 <p>For a definition of a histogram, we can use the <a href="https://en.wikipedia.org/wiki/Histogram">Wikipedia page</a>:</p>
 <blockquote>
@@ -85,7 +85,7 @@ My main point is that with variable-sized binnings, things are less obvious and 
 </blockquote>
 <p>and, a bit below</p>
 <blockquote>
-<p>However, bins need not be of equal width; in that case, the erected rectangle is defined to have its area proportional to the frequency of cases in the bin. The vertical axis is then not the frequency but frequency density—the number of cases per unit of the variable on the horizontal axis. Examples of variable bin width are displayed on Census bureau data below.</p>
+<p>However, bins need not be of equal width; in that case, the erected rectangle is defined to have its area proportional to the frequency of cases in the bin. The vertical axis is then not the frequency but frequency density—the number of cases per unit of the variable on the horizontal axis.</p>
 </blockquote>
 <p>Except, this is not what is done in ROOT: it always makes the bin height proportional to its contents, also in variable-width binning. How that causes confusion is what half of this page is about.</p>
 <p>A very simple illustration is the display of a uniform distribution with variable bin size</p>
@@ -330,7 +330,7 @@ In my (not very polished) <a href="https://github.com/pieterdavid/mplbplot">mplb
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Also note that, when dividing by the bin width, the integral of the histogram (taking into account the units on the x axis) matches the actual integral of the histogram.
 This is true independently of the binning choice then, which makes it easier to estimate how many counts there are in a part of the distribution (by multiply the x range, instead of the number of bins, with the height).</p>
-<h3 id="Rebinning-or-transforming-the-x-axis-variable?">Rebinning or transforming the x axis variable?<a class="anchor-link" href="posts/histogramsvisualisation.html#Rebinning-or-transforming-the-x-axis-variable?">¶</a>
+<h3 id="Rebinning-or-transforming-the-x-axis-variable?">Rebinning or transforming the x axis variable?<a class="anchor-link" href="posts/histogramsvisualisation/#Rebinning-or-transforming-the-x-axis-variable?">¶</a>
 </h3>
 <p>A consequence of the above is that from time to time, rebinning is used to get distributions into a specific shape, e.g. to obtain a flat distribution.
 In my opinion this only adds to the confusion above: the shape of a distribution should not depend on the binning choice.
@@ -481,21 +481,21 @@ searching of the full repository, parts of it, and the complete git history, wit
 which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
 (if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
 I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
-<pre class="code ini"><a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-1"></a><span class="k">[alias]</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-3"></a><span class="k">[grep]</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-5"></a><span class="s">  lineNumber = true</span>
-<a name="rest_code_35cb7f8d37004865a44fb3b6ed9512bc-6"></a><span class="s">  color = auto</span>
+<pre class="code ini"><a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-1"></a><span class="k">[alias]</span>
+<a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
+<a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-3"></a><span class="k">[grep]</span>
+<a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-5"></a><span class="s">  lineNumber = true</span>
+<a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-6"></a><span class="s">  color = auto</span>
 </pre>
 <p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
-<pre class="code sh"><a name="rest_code_ae42fb8d2bfa4d0eb4859234106495c3-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
+<pre class="code sh"><a name="rest_code_2bebd00311b8410cbfb7cfaf18ab6bfe-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
 </pre>
 <p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.</p>
 <p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
 variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_3a7188b5970e4b2d8525bc51a5d5c59a-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+<pre class="code sh"><a name="rest_code_dc176b9a230c469c9738fade16dc0000-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 </pre>
 </div>
 <div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting">
@@ -511,14 +511,14 @@ But when calling <code class="docutils literal">git show</code>, we have a filen
 first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
 <code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_c84f94e2bef24a88904de1990d4b8ca4-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
+<pre class="code sh"><a name="rest_code_aba58a3f5eb54d579bff25e2c63e6f65-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
+<a name="rest_code_aba58a3f5eb54d579bff25e2c63e6f65-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
 </pre>
 <p>The following git alias (using the trick from
 <a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
 will run the script on the output of <code class="docutils literal">git show</code></p>
-<pre class="code ini"><a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-1"></a><span class="k">[alias]</span>
-<a name="rest_code_e52edc6df7254d4a84132390f61ef5a2-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
+<pre class="code ini"><a name="rest_code_0ae24b3d86b548239cbdba091a710f29-1"></a><span class="k">[alias]</span>
+<a name="rest_code_0ae24b3d86b548239cbdba091a710f29-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
 </pre>
 <p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
 (in this case C++) syntax highlighting.</p>
