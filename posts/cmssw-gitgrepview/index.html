@@ -107,21 +107,21 @@ searching of the full repository, parts of it, and the complete git history, wit
 which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
 (if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
 I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
-<pre class="code ini"><a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-1"></a><span class="k">[alias]</span>
-<a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-3"></a><span class="k">[grep]</span>
-<a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-5"></a>  <span class="na">lineNumber</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_7baf42cf5e7e4bc18110fc42202fa663-6"></a>  <span class="na">color</span> <span class="o">=</span> <span class="s">auto</span>
+<pre class="code ini"><a name="rest_code_5d8d9296d690421496c1f90f2d09c197-1"></a><span class="k">[alias]</span>
+<a name="rest_code_5d8d9296d690421496c1f90f2d09c197-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
+<a name="rest_code_5d8d9296d690421496c1f90f2d09c197-3"></a><span class="k">[grep]</span>
+<a name="rest_code_5d8d9296d690421496c1f90f2d09c197-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_5d8d9296d690421496c1f90f2d09c197-5"></a>  <span class="na">lineNumber</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_5d8d9296d690421496c1f90f2d09c197-6"></a>  <span class="na">color</span> <span class="o">=</span> <span class="s">auto</span>
 </pre>
 <p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
-<pre class="code sh"><a name="rest_code_76a2cf2541014faeb7b28ec4f4f8679b-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
+<pre class="code sh"><a name="rest_code_27441d7785744cf2a8396f0a8622a200-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
 </pre>
 <p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.</p>
 <p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
 variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_6491200c6e024f568be1a6169cecb3aa-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+<pre class="code sh"><a name="rest_code_6ea61b359be64cd2820a66f317ac9483-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 </pre></section><section id="git-show-with-vim-as-a-pager-and-syntax-higlighting"><h2>git show with vim as a pager, and syntax higlighting</h2>
 <p>Nothing too special by itself, but a useful helper command to know about: <code class="docutils literal">git show revision:path</code>
 can be used as the equivalent of <code class="docutils literal">cat</code>, <code class="docutils literal">less</code> (or your favourite plain-text pager)
@@ -134,14 +134,14 @@ But when calling <code class="docutils literal">git show</code>, we have a filen
 first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
 <code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_c22534bea3c94ee5a3da5ac1c9388a10-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_c22534bea3c94ee5a3da5ac1c9388a10-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
+<pre class="code sh"><a name="rest_code_2ee7dbfdb6ba49d399010642c784eb78-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
+<a name="rest_code_2ee7dbfdb6ba49d399010642c784eb78-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
 </pre>
 <p>The following git alias (using the trick from
 <a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
 will run the script on the output of <code class="docutils literal">git show</code></p>
-<pre class="code ini"><a name="rest_code_1d63848938214eeca16968349104880e-1"></a><span class="k">[alias]</span>
-<a name="rest_code_1d63848938214eeca16968349104880e-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
+<pre class="code ini"><a name="rest_code_9c9b3b8b1491488a9474fa5fb2ae73bf-1"></a><span class="k">[alias]</span>
+<a name="rest_code_9c9b3b8b1491488a9474fa5fb2ae73bf-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
 </pre>
 <p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
 (in this case C++) syntax highlighting.</p>
@@ -192,13 +192,14 @@ will run the script on the output of <code class="docutils literal">git show</co
         
         
 <div id="comment-section"></div>
+
 <script>
 initComments({
   node: document.getElementById("comment-section"),
   defaultHomeserverUrl: "https://matrix.cactus.chat:8448",
   serverName: "cactus.chat",
   siteName: "pieterdavid-personalblog",
-  commentSectionId: "cache/posts/cmsswgittips.html"
+  commentSectionId: "searching-and-browsing-cmssw-use-git"
 })
 </script></section></article><footer id="footer"><p>Contents © 2021         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
             
