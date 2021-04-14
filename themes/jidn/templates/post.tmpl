@@ -1,7 +1,7 @@
 ## -*- coding: utf-8 -*-
 <%namespace name="helper" file="post_helper.tmpl"/>
 <%namespace name="pheader" file="post_header.tmpl"/>
-<%namespace name="comments" file="comments_helper.tmpl"/>
+<%namespace name="comments" file="comments_helper_cactus.tmpl"/>
 <%namespace name="math" file="math_helper.tmpl"/>
 <%inherit file="base.tmpl"/>
 
@@ -24,7 +24,7 @@
     ${helper.twitter_card_information(post)}
     ${helper.meta_translations(post)}
     ${math.math_styles_ifpost(post)}
-    ${comments.comment_extra_head()}
+${comments.comment_extra_head()}
 </%block>
 
 <%block name="content">

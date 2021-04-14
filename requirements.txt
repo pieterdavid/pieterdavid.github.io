@@ -1,2 +1,2 @@
-git+git://github.com/pieterdavid/nikola.git@addcactuscomments#egg=Nikola
+Nikola[extras]
 notebook>=4.0.0
