@@ -62,9 +62,6 @@ MathJax.Hub.Config({
         <div class="metadata">
             <p class="dateline"><a href="posts/histogramsvisualisation/" rel="bookmark"><time class="post-date published dt-published" datetime="2020-12-18T14:13:00+01:00" title="2020-12-18 14:13">2020-12-18 14:13</time></a></p>
                 <p class="commentline">
-        
-<a href="posts/histogramsvisualisation/#comment-section">Comments</a>
-
 
         </p>
 </div>
@@ -449,9 +446,6 @@ If the distribution in the plane is peaks around the reference point and falls w
         <div class="metadata">
             <p class="dateline"><a href="posts/cmssw-gitgrepview/" rel="bookmark"><time class="post-date published dt-published" datetime="2019-02-11T09:15:00+01:00" title="2019-02-11 09:15">2019-02-11 09:15</time></a></p>
                 <p class="commentline">
-        
-<a href="posts/cmssw-gitgrepview/#comment-section">Comments</a>
-
 
         </p>
 </div>
@@ -480,21 +474,21 @@ searching of the full repository, parts of it, and the complete git history, wit
 which also introduces a <code class="docutils literal">git ack</code> alias to format the results like <a class="reference external" href="https://beyondgrep.com/">ack</a>
 (if you do not know <a class="reference external" href="https://beyondgrep.com/">ack</a> yet: it is like <a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html">grep</a> but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
 I would recommend the following customization (in <code class="docutils literal"><span class="pre">~/.gitconfig</span></code>):</p>
-<pre class="code ini"><a name="rest_code_923e926a6b58442aa18e77115099dd1c-1"></a><span class="k">[alias]</span>
-<a name="rest_code_923e926a6b58442aa18e77115099dd1c-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
-<a name="rest_code_923e926a6b58442aa18e77115099dd1c-3"></a><span class="k">[grep]</span>
-<a name="rest_code_923e926a6b58442aa18e77115099dd1c-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_923e926a6b58442aa18e77115099dd1c-5"></a>  <span class="na">lineNumber</span> <span class="o">=</span> <span class="s">true</span>
-<a name="rest_code_923e926a6b58442aa18e77115099dd1c-6"></a>  <span class="na">color</span> <span class="o">=</span> <span class="s">auto</span>
+<pre class="code ini"><a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-1"></a><span class="k">[alias]</span>
+<a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-2"></a>  <span class="na">ack</span> <span class="o">=</span> <span class="s">grep --break --heading --line-number --color=auto</span>
+<a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-3"></a><span class="k">[grep]</span>
+<a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-4"></a>  <span class="na">extendRegexp</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-5"></a>  <span class="na">lineNumber</span> <span class="o">=</span> <span class="s">true</span>
+<a name="rest_code_45c2d90e8adc4c76be8af854215abb2b-6"></a>  <span class="na">color</span> <span class="o">=</span> <span class="s">auto</span>
 </pre>
 <p>The short version: run <code class="docutils literal">git grep</code> from the root of the repository (<code class="docutils literal">$CMSSW_BASE/src</code>) with one of</p>
-<pre class="code sh"><a name="rest_code_3638295b579046efbc7fb7bac268906f-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
+<pre class="code sh"><a name="rest_code_5e0870050c8149b3a8acdd2f6a2dbf12-1"></a>git <span class="o">[</span>grep or ack<span class="o">]</span> pattern &lt;tree&gt; -- &lt;path&gt;
 </pre>
 <p>where both the <code class="docutils literal">&lt;tree&gt;</code> and the <code class="docutils literal"><span class="pre">--</span> path</code> parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.</p>
 <p>As a final example, the following command searches for the definition of the the <code class="docutils literal">jetId</code>
 variable in a specific release:</p>
-<pre class="code sh"><a name="rest_code_a62818c29358449280e218ce057ead69-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+<pre class="code sh"><a name="rest_code_9188c67853124dd88c48179bc0b00f0d-1"></a>git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
 </pre></section><section id="git-show-with-vim-as-a-pager-and-syntax-higlighting"><h2>git show with vim as a pager, and syntax higlighting</h2>
 <p>Nothing too special by itself, but a useful helper command to know about: <code class="docutils literal">git show revision:path</code>
 can be used as the equivalent of <code class="docutils literal">cat</code>, <code class="docutils literal">less</code> (or your favourite plain-text pager)
@@ -507,14 +501,14 @@ But when calling <code class="docutils literal">git show</code>, we have a filen
 first ask <code class="docutils literal">ftplugin</code> which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the <a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e">filetypeless.sh</a> script (which should be installed in
 <code class="docutils literal"><span class="pre">~/.vim/macros/</span></code>), the gist of it is</p>
-<pre class="code sh"><a name="rest_code_a10500fd3e6842a0b2e35267b8e63e8a-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
-<a name="rest_code_a10500fd3e6842a0b2e35267b8e63e8a-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
+<pre class="code sh"><a name="rest_code_10981facfd5f404f87584be3aa4b353d-1"></a><span class="nv">ftcmd</span><span class="o">=</span><span class="k">$(</span>vim -es --cmd <span class="s2">"filetype on"</span> <span class="s2">"</span><span class="si">${</span><span class="nv">1</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">':exec ":set filetype?" | exec ":q!"'</span><span class="k">)</span>
+<a name="rest_code_10981facfd5f404f87584be3aa4b353d-2"></a>vim -R --cmd <span class="s1">'let no_plugin_maps = 1'</span> -c <span class="s2">"set </span><span class="si">${</span><span class="nv">ftcmd</span><span class="si">}</span><span class="s2">"</span> -c <span class="s1">'runtime! macros/less.vim'</span>
 </pre>
 <p>The following git alias (using the trick from
 <a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display">this recipe</a>)
 will run the script on the output of <code class="docutils literal">git show</code></p>
-<pre class="code ini"><a name="rest_code_d4842805a4a84a82b72a6477ec576bed-1"></a><span class="k">[alias]</span>
-<a name="rest_code_d4842805a4a84a82b72a6477ec576bed-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
+<pre class="code ini"><a name="rest_code_dcb723e569e44ed786fff34106e400ed-1"></a><span class="k">[alias]</span>
+<a name="rest_code_dcb723e569e44ed786fff34106e400ed-2"></a>  <span class="na">view</span> <span class="o">=</span> <span class="s">"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"</span>
 </pre>
 <p>and that's all: <code class="docutils literal">git view HEAD:some_file.cpp</code> now shows the file in vim, with
 (in this case C++) syntax highlighting.</p>
@@ -525,9 +519,6 @@ will run the script on the output of <code class="docutils literal">git show</co
         <div class="metadata">
             <p class="dateline"><a href="posts/welcome/" rel="bookmark"><time class="post-date published dt-published" datetime="2019-01-19T15:53:09+01:00" title="2019-01-19 15:53">2019-01-19 15:53</time></a></p>
                 <p class="commentline">
-        
-<a href="posts/welcome/#comment-section">Comments</a>
-
 
         </p>
 </div>
@@ -546,8 +537,6 @@ Physics results go into papers, but the more technical bits of the job
 </div>
 
 
-
-        
 
 
 
