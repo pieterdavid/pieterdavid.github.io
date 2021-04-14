@@ -76,8 +76,7 @@ MathJax.Hub.Config({
 <a href="https://indico.cism.ucl.ac.be/event/84/">"Introduction to Tensorflow"</a>
 session of the
 <a href="http://www.ceci-hpc.be/training.html">2020 CISM/CÉCI trainings</a>,
-see the <a href="index.html">table of contents</a> for the other parts.</em><div class="section" id="activation-functions">
-<h2>Activation functions</h2>
+see the <a href="index.html">table of contents</a> for the other parts.</em><section id="activation-functions"><h2>Activation functions</h2>
 <p>We have already seen
 <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/relu">rectified linear unit (relu)</a>,
 <a class="reference external" href="https://www.tensorflow.org/api_docs/python/tf/keras/activations/sigmoid">sigmoid</a>, and
@@ -101,9 +100,7 @@ With relu hidden layers this is much less of a problem, which is one of the
 reasons why they are some common in deep learning.</p>
 <p>On the other hand, there should be enough non-linearity in the network to
 be able to adapt to the structure in the training sample.</p>
-</div>
-<div class="section" id="preprocessing-and-feature-engineering">
-<h2>Preprocessing and feature engineering</h2>
+</section><section id="preprocessing-and-feature-engineering"><h2>Preprocessing and feature engineering</h2>
 <p>As can quickly be seen in the <a class="reference external" href="https://playground.tensorflow.org">Tensorflow playground</a>, a deep neural network
 may be able to learn any structure in the input data, but some extra input
 features based on other knowledge of the data can make a huge difference.</p>
@@ -111,11 +108,8 @@ features based on other knowledge of the data can make a huge difference.</p>
 values of inputs, so making sure that they are of order one is usually a good
 idea (e.g. by shifting or rescaling them by a constant factor), this is called
 preprocessing.</p>
-</div>
-<div class="section" id="architecture-examples">
-<h2>Architecture examples</h2>
-<div class="section" id="convolutional-neural-networks">
-<h3>Convolutional neural networks</h3>
+</section><section id="architecture-examples"><h2>Architecture examples</h2>
+<section id="convolutional-neural-networks"><h3>Convolutional neural networks</h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Convolutional_neural_network#Pooling">Convolutional neural networks</a> are often used for image recognition tasks.
 They use an interesting form of weight sharing: a convolutional layer applies
 a function on the values of a group of adjacent pixels (e.g. 2x2, 3x3, or
@@ -123,10 +117,7 @@ larger), and does that every such group in the input (with the same function).
 They are typically followed by pooling layers that take the maximum or average
 of these outputs over the image, which makes that they recognize local features
 independently of where those are in the image (e.g. objects in a picture).</p>
-<img alt="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png">
-</div>
-<div class="section" id="recurrent-neural-networks">
-<h3>Recurrent neural networks</h3>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png" src="https://upload.wikimedia.org/wikipedia/commons/6/63/Typical_cnn.png"></section><section id="recurrent-neural-networks"><h3>Recurrent neural networks</h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Recurrent_neural_network">Recurrent neural networks</a> do not take a fixed number of inputs, but a
 sequence of (fixed-size) inputs, and are often used in applications like speech
 or handwriting recognition.
@@ -141,9 +132,7 @@ A well-known solution to this is the
 <img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png"><p>Graph neural networks are a more general class of neural networks that take
 structured data of variable size, and with more complex relations than being
 elements of a list, as input.</p>
-</div>
-<div class="section" id="generative-adversarial-networks">
-<h3>Generative adversarial networks</h3>
+</section><section id="generative-adversarial-networks"><h3>Generative adversarial networks</h3>
 <p><a class="reference external" href="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Recurrent_neural_network_unfold.svg/640px-Recurrent_neural_network_unfold.svg.png">Generative adversarial networks</a> solve a slightly different problem: how to
 generate data that looks like the input.
 To do so, two networks are trained, a generator that takes random number as
@@ -157,19 +146,13 @@ Both are trained together, after some training step of the generator, the
 discriminator is updated; training can be tricky, it is important that the
 discriminator always stays close to optimal, such that it gives the right
 feedback to the generator.</p>
-</div>
-<div class="section" id="an-example-of-unsupervised-learning-autoencoders">
-<h3>An example of unsupervised learning: autoencoders</h3>
+</section><section id="an-example-of-unsupervised-learning-autoencoders"><h3>An example of unsupervised learning: autoencoders</h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Autoencoder">Autoencoders</a> can be used to learn a lower-dimensional representation of
 the data, or perform (lossy) compression.
 They consist of a neural network that is mirrored around a hidden layer with
 fewer nodes than the input, and are trained for the output nodes to approximate
 the input nodes as closely as possible.</p>
-<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png">
-</div>
-</div>
-<div class="section" id="diagnostics">
-<h2>Diagnostics</h2>
+<img alt="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png" src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/37/Autoencoder_schema.png/264px-Autoencoder_schema.png"></section></section><section id="diagnostics"><h2>Diagnostics</h2>
 <p>A big advantage of modern machine learning frameworks like Tensorflow is that,
 in addition to making training and inference efficienty, they provide easy to
 all internal values, because everything is (or looks like) a simple python
@@ -178,9 +161,9 @@ Standard graphical tools like <a class="reference external" href="https://www.te
 specific is needed, it can often also be done with a few lines of code; the
 <code class="docutils literal">Model.fit</code> function for instance allows for callbacks, functions that are
 called during training.</p>
+</section>
 </div>
-</div>
-    </section></article><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
+    </section></article><footer id="footer"><p>Contents © 2021         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
             
         </footer>
 </div>

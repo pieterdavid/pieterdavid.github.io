@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pieter David's blog</title><link>https://pieterdavid.github.io/</link><description>Pieter's blog</description><atom:link href="https://pieterdavid.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2020 &lt;a href="mailto:pieter(point)david(at)SPAMNOTgmail(point)com"&gt;Pieter David&lt;/a&gt; &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /&gt;&lt;/a&gt;</copyright><lastBuildDate>Fri, 18 Dec 2020 14:11:44 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>A few remarks about drawing histograms</title><link>https://pieterdavid.github.io/posts/histogramsvisualisation/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
+<?xml-stylesheet type="text/xsl" href="assets/xml/rss.xsl" media="all"?><rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Pieter David's blog</title><link>https://pieterdavid.github.io/</link><description>Pieter's blog</description><atom:link href="https://pieterdavid.github.io/rss.xml" rel="self" type="application/rss+xml"></atom:link><language>en</language><copyright>Contents © 2021 &lt;a href="mailto:pieter(point)david(at)SPAMNOTgmail(point)com"&gt;Pieter David&lt;/a&gt; &lt;a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"&gt;&lt;img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png" /&gt;&lt;/a&gt;</copyright><lastBuildDate>Wed, 14 Apr 2021 15:46:12 GMT</lastBuildDate><generator>Nikola (getnikola.com)</generator><docs>http://blogs.law.harvard.edu/tech/rss</docs><item><title>A few remarks about drawing histograms</title><link>https://pieterdavid.github.io/posts/histogramsvisualisation/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;div class="cell border-box-sizing text_cell rendered"&gt;&lt;div class="prompt input_prompt"&gt;
 &lt;/div&gt;&lt;div class="inner_cell"&gt;
 &lt;div class="text_cell_render border-box-sizing rendered_html"&gt;
 &lt;p&gt;For all the time we spend in (collider) high-energy physics on filling and drawing histograms, it is a bit surprising that the way histograms are drawn by default in ROOT, and some of its peculiarities, are rarely discussed.
@@ -370,28 +370,28 @@ takes a few seconds to run &lt;code class="docutils literal"&gt;cmsrel&lt;/code&
 &lt;p&gt;A less known feature of such a setup is that it also allows for very fast (and flexible)
 searching of the full repository, parts of it, and the complete git history, with
 &lt;code class="docutils literal"&gt;git grep&lt;/code&gt; and &lt;code class="docutils literal"&gt;git show&lt;/code&gt;. The rest of this post describes my favourite tricks and aliases.&lt;/p&gt;
-&lt;div class="section" id="git-grep-and-ack"&gt;
+&lt;section id="git-grep-and-ack"&gt;
 &lt;h2&gt;git grep and ack&lt;/h2&gt;
 &lt;p&gt;There are many online introductions to using &lt;code class="docutils literal"&gt;git grep&lt;/code&gt;, see e.g. the
 &lt;a class="reference external" href="http://travisjeffery.com/b/2012/02/search-a-git-repo-like-a-ninja/"&gt;"Search a git repo like a ninja" post by Travis Jeffery&lt;/a&gt;,
 which also introduces a &lt;code class="docutils literal"&gt;git ack&lt;/code&gt; alias to format the results like &lt;a class="reference external" href="https://beyondgrep.com/"&gt;ack&lt;/a&gt;
 (if you do not know &lt;a class="reference external" href="https://beyondgrep.com/"&gt;ack&lt;/a&gt; yet: it is like &lt;a class="reference external" href="https://www.gnu.org/software/grep/manual/grep.html"&gt;grep&lt;/a&gt; but with better defaults, switches to search only some file types etc.—really handy, and there is a one-file install option).
 I would recommend the following customization (in &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.gitconfig&lt;/span&gt;&lt;/code&gt;):&lt;/p&gt;
-&lt;pre class="code ini"&gt;&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;ack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;grep --break --heading --line-number --color=auto&lt;/span&gt;
-&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;[grep]&lt;/span&gt;
-&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-4"&gt;&lt;/a&gt;  &lt;span class="na"&gt;extendRegexp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
-&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-5"&gt;&lt;/a&gt;&lt;span class="s"&gt;  lineNumber = true&lt;/span&gt;
-&lt;a name="rest_code_39eb95a67f7b43f685d3d121eb029c89-6"&gt;&lt;/a&gt;&lt;span class="s"&gt;  color = auto&lt;/span&gt;
+&lt;pre class="code ini"&gt;&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;ack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;grep --break --heading --line-number --color=auto&lt;/span&gt;
+&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-3"&gt;&lt;/a&gt;&lt;span class="k"&gt;[grep]&lt;/span&gt;
+&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-4"&gt;&lt;/a&gt;  &lt;span class="na"&gt;extendRegexp&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-5"&gt;&lt;/a&gt;  &lt;span class="na"&gt;lineNumber&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;true&lt;/span&gt;
+&lt;a name="rest_code_8f75005ef5884edbb384305a36220cf7-6"&gt;&lt;/a&gt;  &lt;span class="na"&gt;color&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;auto&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;The short version: run &lt;code class="docutils literal"&gt;git grep&lt;/code&gt; from the root of the repository (&lt;code class="docutils literal"&gt;$CMSSW_BASE/src&lt;/code&gt;) with one of&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_2bebd00311b8410cbfb7cfaf18ab6bfe-1"&gt;&lt;/a&gt;git &lt;span class="o"&gt;[&lt;/span&gt;grep or ack&lt;span class="o"&gt;]&lt;/span&gt; pattern &amp;lt;tree&amp;gt; -- &amp;lt;path&amp;gt;
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_1204f5fd3ca34a77b6ec423a05e87909-1"&gt;&lt;/a&gt;git &lt;span class="o"&gt;[&lt;/span&gt;grep or ack&lt;span class="o"&gt;]&lt;/span&gt; pattern &amp;lt;tree&amp;gt; -- &amp;lt;path&amp;gt;
 &lt;/pre&gt;&lt;p&gt;where both the &lt;code class="docutils literal"&gt;&amp;lt;tree&amp;gt;&lt;/code&gt; and the &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;--&lt;/span&gt; path&lt;/code&gt; parts, to specify the revision, tag or branch,
 and a part of the repository that should be searched, respectively, are optional.&lt;/p&gt;
 &lt;p&gt;As a final example, the following command searches for the definition of the the &lt;code class="docutils literal"&gt;jetId&lt;/code&gt;
 variable in a specific release:&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_dc176b9a230c469c9738fade16dc0000-1"&gt;&lt;/a&gt;git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
-&lt;/pre&gt;&lt;/div&gt;
-&lt;div class="section" id="git-show-with-vim-as-a-pager-and-syntax-higlighting"&gt;
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_c4c47e672d0841ad94ba72e6fc89547e-1"&gt;&lt;/a&gt;git ack jetId CMSSW_10_2_9 -- PhysicsTools/NanoAOD
+&lt;/pre&gt;&lt;/section&gt;
+&lt;section id="git-show-with-vim-as-a-pager-and-syntax-higlighting"&gt;
 &lt;h2&gt;git show with vim as a pager, and syntax higlighting&lt;/h2&gt;
 &lt;p&gt;Nothing too special by itself, but a useful helper command to know about: &lt;code class="docutils literal"&gt;git show revision:path&lt;/code&gt;
 can be used as the equivalent of &lt;code class="docutils literal"&gt;cat&lt;/code&gt;, &lt;code class="docutils literal"&gt;less&lt;/code&gt; (or your favourite plain-text pager)
@@ -404,16 +404,16 @@ But when calling &lt;code class="docutils literal"&gt;git show&lt;/code&gt;, we 
 first ask &lt;code class="docutils literal"&gt;ftplugin&lt;/code&gt; which filetype it would resolve, and then pass it when opening vim.
 This is what is done in the &lt;a class="reference external" href="https://gist.github.com/pieterdavid/b58c586e333ab0ac00b7b7499e4a487e"&gt;filetypeless.sh&lt;/a&gt; script (which should be installed in
 &lt;code class="docutils literal"&gt;&lt;span class="pre"&gt;~/.vim/macros/&lt;/span&gt;&lt;/code&gt;), the gist of it is&lt;/p&gt;
-&lt;pre class="code sh"&gt;&lt;a name="rest_code_aba58a3f5eb54d579bff25e2c63e6f65-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;vim -es --cmd &lt;span class="s2"&gt;"filetype on"&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;':exec ":set filetype?" | exec ":q!"'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
-&lt;a name="rest_code_aba58a3f5eb54d579bff25e2c63e6f65-2"&gt;&lt;/a&gt;vim -R --cmd &lt;span class="s1"&gt;'let no_plugin_maps = 1'&lt;/span&gt; -c &lt;span class="s2"&gt;"set &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;'runtime! macros/less.vim'&lt;/span&gt;
+&lt;pre class="code sh"&gt;&lt;a name="rest_code_ab80b673ab084616920c2846b5112ee4-1"&gt;&lt;/a&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="k"&gt;$(&lt;/span&gt;vim -es --cmd &lt;span class="s2"&gt;"filetype on"&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;1&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;':exec ":set filetype?" | exec ":q!"'&lt;/span&gt;&lt;span class="k"&gt;)&lt;/span&gt;
+&lt;a name="rest_code_ab80b673ab084616920c2846b5112ee4-2"&gt;&lt;/a&gt;vim -R --cmd &lt;span class="s1"&gt;'let no_plugin_maps = 1'&lt;/span&gt; -c &lt;span class="s2"&gt;"set &lt;/span&gt;&lt;span class="si"&gt;${&lt;/span&gt;&lt;span class="nv"&gt;ftcmd&lt;/span&gt;&lt;span class="si"&gt;}&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt; -c &lt;span class="s1"&gt;'runtime! macros/less.vim'&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;The following git alias (using the trick from
 &lt;a class="reference external" href="https://git.wiki.kernel.org/index.php/Aliases#Use_graphviz_for_display"&gt;this recipe&lt;/a&gt;)
 will run the script on the output of &lt;code class="docutils literal"&gt;git show&lt;/code&gt;&lt;/p&gt;
-&lt;pre class="code ini"&gt;&lt;a name="rest_code_0ae24b3d86b548239cbdba091a710f29-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
-&lt;a name="rest_code_0ae24b3d86b548239cbdba091a710f29-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"&lt;/span&gt;
+&lt;pre class="code ini"&gt;&lt;a name="rest_code_e4e3bf1996d64540b9a627211d479cbd-1"&gt;&lt;/a&gt;&lt;span class="k"&gt;[alias]&lt;/span&gt;
+&lt;a name="rest_code_e4e3bf1996d64540b9a627211d479cbd-2"&gt;&lt;/a&gt;  &lt;span class="na"&gt;view&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="s"&gt;"!v() { git show $1 | ~/.vim/macros/filetypeless.sh $1; }; v"&lt;/span&gt;
 &lt;/pre&gt;&lt;p&gt;and that's all: &lt;code class="docutils literal"&gt;git view HEAD:some_file.cpp&lt;/code&gt; now shows the file in vim, with
 (in this case C++) syntax highlighting.&lt;/p&gt;
-&lt;/div&gt;&lt;/div&gt;</description><guid>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</guid><pubDate>Mon, 11 Feb 2019 08:15:00 GMT</pubDate></item><item><title>Welcome to my blog</title><link>https://pieterdavid.github.io/posts/welcome/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;p&gt;Hello,&lt;/p&gt;
+&lt;/section&gt;&lt;/div&gt;</description><guid>https://pieterdavid.github.io/posts/cmssw-gitgrepview/</guid><pubDate>Mon, 11 Feb 2019 08:15:00 GMT</pubDate></item><item><title>Welcome to my blog</title><link>https://pieterdavid.github.io/posts/welcome/</link><dc:creator>Pieter David</dc:creator><description>&lt;div&gt;&lt;p&gt;Hello,&lt;/p&gt;
 &lt;p&gt;I am a particle physicist, currently working on the CMS experiment at the CERN LHC (previously LHCb).
 Most of my work is about data analysis, and detector and reconstruction software.
 Physics results go into papers, but the more technical bits of the job

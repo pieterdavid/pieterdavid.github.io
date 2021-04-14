@@ -74,23 +74,18 @@ MathJax.Hub.Config({
     </header><section class="e-content entry-content" itemprop="articleBody text"><div>
 <p><em>This page collects the material for for the CISM/CÉCI training session on 10/11/2020,
 see the</em> <a class="reference external" href="https://indico.cism.ucl.ac.be/event/84/">indico page</a> <em>for more details.</em></p>
-<div class="section" id="table-of-contents">
-<h2>Table of contents</h2>
+<section id="table-of-contents"><h2>Table of contents</h2>
 <ul class="simple">
 <li><p><a class="reference external" href="mlintro.html">A brief introduction to machine learning</a></p></li>
 <li><p><a class="reference external" href="tfprimer.html">A more technical introduction to Tensorflow</a></p></li>
 <li><p><a class="reference external" href="morenningredients.html">Other building blocks and architectures</a></p></li>
 <li><p><a class="reference external" href="exercise1.html">Your turn: an exercise</a></p></li>
-</ul>
-</div>
-<div class="section" id="to-make-it-more-interactive">
-<h2>To make it more interactive</h2>
+</ul></section><section id="to-make-it-more-interactive"><h2>To make it more interactive</h2>
 <p>While not absolutely essential, it is nice if you can try some things yourself
 (time permitting, there are also some exercises), so if possible you should
 try to set up an environment where you can play a bit with <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> (ideally
 before the training, to save time).</p>
-<div class="section" id="using-colaboratory">
-<h3>Using <a class="reference external" href="https://colab.research.google.com/">Colaboratory</a>
+<section id="using-colaboratory"><h3>Using <a class="reference external" href="https://colab.research.google.com/">Colaboratory</a>
 </h3>
 <a class="reference external image-reference" href="https://colab.research.google.com/github/pieterdavid/cism-mltf2020"><img alt="https://colab.research.google.com/assets/colab-badge.svg" src="https://colab.research.google.com/assets/colab-badge.svg"></a>
 <p>If you have a Google account, you can use <a class="reference external" href="https://colab.research.google.com/">Colaboratory</a> to interactively edit
@@ -101,9 +96,7 @@ so it will not be able to save there, but you can save a copy in your Google Dri
 <p>The environment is meant for machine learning (with <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a>), so no
 additional setup is required (resources are not guaranteed, but likely
 sufficient for anything we will do this afternoon).</p>
-</div>
-<div class="section" id="using-binder">
-<h3>Using <a class="reference external" href="https://mybinder.org">binder</a>
+</section><section id="using-binder"><h3>Using <a class="reference external" href="https://mybinder.org">binder</a>
 </h3>
 <a class="reference external image-reference" href="https://mybinder.org/v2/gh/pieterdavid/cism-mltf2020/main"><img alt="https://mybinder.org/badge_logo.svg" src="https://mybinder.org/badge_logo.svg"></a>
 <p>The badge above will launch a <a class="reference external" href="https://mybinder.org">binder</a> session with an environment prepared
@@ -112,16 +105,14 @@ Resources will be limited, so some of the larger networks may not finish
 training.
 Please note that this also is a transient session, so if you want to keep
 the notebooks with your modifications you will have to download them.</p>
-</div>
-<div class="section" id="on-manneback">
-<h3>On manneback</h3>
+</section><section id="on-manneback"><h3>On manneback</h3>
 <p>The simplest way (since you are assumed to have an account,
 and to be familiar with using SSH and the command line) if you have a stable
 internet connection is to open a terminal and launch an interactive job with slurm on the
 <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Computing/index.html#id1">Manneback</a> cluster.</p>
 <p>First connect to the interactive node:</p>
-<pre class="code sh"><a name="rest_code_006fb2b068194905b0cb31810487f58a-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
-<a name="rest_code_006fb2b068194905b0cb31810487f58a-2"></a>ssh manneback.cism.ucl.ac.be
+<pre class="code sh"><a name="rest_code_96c90235707a41158d5cf27defc18463-1"></a>ssh gwceci.cism.ucl.ac.be <span class="c1"># or gwcism.cism.ucl.ac.be</span>
+<a name="rest_code_96c90235707a41158d5cf27defc18463-2"></a>ssh manneback.cism.ucl.ac.be
 </pre>
 <p>We will in any case launch an interactive job on the worker (such that we
 don't all compete for resources on the same machine), but there are two options:
@@ -130,11 +121,11 @@ notebook (and view some figures) from the browser on your personal computer.</p>
 <p>This needs a tunnel to manneback, which can be set up with <a class="reference external" href="https://sshuttle.readthedocs.io/en/stable/">sshuttle</a> following
 the <a class="reference external" href="https://www.cism.ucl.ac.be/doc/_contents/Other/index.html#jupyter">CISM instructions</a>,
 and changing the <code class="docutils literal">srun</code> command to</p>
-<pre class="code sh"><a name="rest_code_c61bfa51eb854e119fe6eb3519762083-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
+<pre class="code sh"><a name="rest_code_b518ff0ec723420894e6e46052fc5fc7-1"></a>srun --pty bash -c <span class="s1">'source /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh; jupyter notebook --ip $(hostname -i) --no-browser'</span>
 </pre>
 <p>which will run</p>
-<pre class="code sh"><a name="rest_code_08cd6f08a5d042ddb44fa7be61b259f4-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
-<a name="rest_code_08cd6f08a5d042ddb44fa7be61b259f4-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
+<pre class="code sh"><a name="rest_code_07cab3b2c87d4475adc8c08eadd7d4ad-1"></a><span class="nb">source</span> /cvmfs/sft.cern.ch/lcg/views/LCG_98python3/x86_64-centos7-gcc9-opt/setup.sh
+<a name="rest_code_07cab3b2c87d4475adc8c08eadd7d4ad-2"></a>jupyter notebook --ip <span class="k">$(</span>hostname -i<span class="k">)</span> --no-browser
 </pre>
 <p>in an interactive slurm job: source an environment setup script, and launch
 a <a class="reference external" href="http://jupyter.org">Jupyter</a> kernel..
@@ -147,34 +138,31 @@ Thanks to the tunnel you can open this in a web browser on your laptop/desktop
 <p>To check that everything is working correctly, you can create a test notebook
 somewhere in your home directory, and try the following to check that
 <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a> is correctly set up:</p>
-<pre class="code python"><a name="rest_code_bb8dd19fdb3a4e6b80e7a6004579aeb1-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
-<a name="rest_code_bb8dd19fdb3a4e6b80e7a6004579aeb1-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
+<pre class="code python"><a name="rest_code_376c2c60b1344dd5a80952e7e5319f75-1"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<a name="rest_code_376c2c60b1344dd5a80952e7e5319f75-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">tf</span><span class="o">.</span><span class="n">__version_</span><span class="p">)</span>
 </pre>
 <p>The main advantage of the notebook over an <a class="reference external" href="http://ipython.org">IPython</a> session is that this gives
 an inline figure:</p>
-<pre class="code python"><a name="rest_code_1dd8e366226a4686a0212e4f2a471e6f-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-<a name="rest_code_1dd8e366226a4686a0212e4f2a471e6f-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
-<a name="rest_code_1dd8e366226a4686a0212e4f2a471e6f-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
-<a name="rest_code_1dd8e366226a4686a0212e4f2a471e6f-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
-</pre>
-</div>
-<div class="section" id="locally">
-<h3>Locally</h3>
+<pre class="code python"><a name="rest_code_23eb48abfd174c458dded6f610863ffe-1"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a name="rest_code_23eb48abfd174c458dded6f610863ffe-2"></a><span class="kn">from</span> <span class="nn">matplotlib</span> <span class="kn">import</span> <span class="n">pyplot</span> <span class="k">as</span> <span class="n">plt</span>
+<a name="rest_code_23eb48abfd174c458dded6f610863ffe-3"></a><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mi">101</span><span class="p">)</span>
+<a name="rest_code_23eb48abfd174c458dded6f610863ffe-4"></a><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></section><section id="locally"><h3>Locally</h3>
 <p>If your internet connection is not very stable, or you are used to running
 python on your personal computer or elsewhere, you can also install <a class="reference external" href="https://www.tensorflow.org">Tensorflow</a>
 in a <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a> environment, or (preferably in a <a class="reference external" href="https://docs.conda.io/en/latest/">virtual environment</a>) with pip,
 more details can be found in the <a class="reference external" href="https://www.tensorflow.org/install">installation instructions</a>.</p>
 <p>With <a class="reference external" href="https://docs.conda.io/en/latest/">conda</a>, all you should need is this:</p>
-<pre class="code sh"><a name="rest_code_b0cb91a3711a4a9c86065b16ab4efd34-1"></a>conda config --add channels conda-forge <span class="c1"># if not already the case</span>
-<a name="rest_code_b0cb91a3711a4a9c86065b16ab4efd34-2"></a>conda create -n mltftraining2020 <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.3.0 <span class="nv">tensorboard</span><span class="o">=</span><span class="m">2</span>.3.0 ipython matplotlib ipykernel
-<a name="rest_code_b0cb91a3711a4a9c86065b16ab4efd34-3"></a>conda activate mltftraining2020
-<a name="rest_code_b0cb91a3711a4a9c86065b16ab4efd34-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
+<pre class="code sh"><a name="rest_code_6d8ac65106014352a69eb3c55661bcfb-1"></a>conda config --add channels conda-forge <span class="c1"># if not already the case</span>
+<a name="rest_code_6d8ac65106014352a69eb3c55661bcfb-2"></a>conda create -n mltftraining2020 <span class="nv">tensorflow</span><span class="o">=</span><span class="m">2</span>.3.0 <span class="nv">tensorboard</span><span class="o">=</span><span class="m">2</span>.3.0 ipython matplotlib ipykernel
+<a name="rest_code_6d8ac65106014352a69eb3c55661bcfb-3"></a>conda activate mltftraining2020
+<a name="rest_code_6d8ac65106014352a69eb3c55661bcfb-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
 </pre>
 <p>And with virtualenv and pip:</p>
-<pre class="code sh"><a name="rest_code_319b40b1a15b4d93a4491bc5a3c362f3-1"></a>python -m venv mltftraining2020 <span class="c1"># pick a name</span>
-<a name="rest_code_319b40b1a15b4d93a4491bc5a3c362f3-2"></a><span class="nb">source</span> mltftraining2020/bin/activate
-<a name="rest_code_319b40b1a15b4d93a4491bc5a3c362f3-3"></a>pip install tensorflow tensorboard ipython matplotlib ipykernel
-<a name="rest_code_319b40b1a15b4d93a4491bc5a3c362f3-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
+<pre class="code sh"><a name="rest_code_12e0df79b16e4cbf8fd81ad1f8393238-1"></a>python -m venv mltftraining2020 <span class="c1"># pick a name</span>
+<a name="rest_code_12e0df79b16e4cbf8fd81ad1f8393238-2"></a><span class="nb">source</span> mltftraining2020/bin/activate
+<a name="rest_code_12e0df79b16e4cbf8fd81ad1f8393238-3"></a>pip install tensorflow tensorboard ipython matplotlib ipykernel
+<a name="rest_code_12e0df79b16e4cbf8fd81ad1f8393238-4"></a>ipython kernel install --user --name <span class="s2">"mltftraining2020"</span>
 </pre>
 <p>If you do not already have the <a class="reference external" href="http://jupyter.org">Jupyter</a> notebook server installed, you should
 add the <code class="docutils literal">notebook</code> package to the conda or pip install command.
@@ -186,12 +174,10 @@ have the most recent version, 2.3.1).</p>
 on dockerhub as
 <a class="reference external" href="https://hub.docker.com/r/pieterdavid/cism-mltf2020">pieterdavid/cism-mltf2020</a>,
 and can be pulled with</p>
-<pre class="code sh"><a name="rest_code_6357264006ed47e89c0f0ac5accbb963-1"></a>docker pull pieterdavid/cism-mltf2020
-</pre>
+<pre class="code sh"><a name="rest_code_43c5232383c142f089c4bd90d25d8989-1"></a>docker pull pieterdavid/cism-mltf2020
+</pre></section></section>
 </div>
-</div>
-</div>
-    </section></article><footer id="footer"><p>Contents © 2020         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
+    </section></article><footer id="footer"><p>Contents © 2021         Pieter David - Powered by         <a href="https://getnikola.com" rel="nofollow">Nikola</a>         <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/"><img alt="Creative Commons License BY-SA" style="border-width:0" src="https://i.creativecommons.org/l/by-sa/4.0/80x15.png"></a></p>
             
         </footer>
 </div>
