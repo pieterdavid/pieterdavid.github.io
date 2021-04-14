@@ -1356,6 +1356,10 @@ GLOBAL_CONTEXT = {
             }
         },  # Extra info about authors
     # "JIDN-theme": "theme-base-blue",
+    "cactus_config": {
+        "defaultHomeserverUrl": "https://matrix.cactus.chat:8448",
+        "serverName": "cactus.chat"
+        }
     }
 
 # Add functions here and they will be called with template
