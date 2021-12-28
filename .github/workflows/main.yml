@@ -17,9 +17,6 @@ jobs:
       run: |
         printf '\n\nGITHUB_REMOTE_NAME = "origin"\nGITHUB_COMMIT_SOURCE = False\n' >> conf.py
         nikola build
-    - name: Deploy (dry-run)
-      if: ${{ github.ref != 'refs/heads/src' }}
-      run: nikola github_deploy
     - name: Deploy
       if: ${{ github.ref == 'refs/heads/src' }}
       run: nikola github_deploy
