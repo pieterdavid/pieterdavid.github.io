@@ -19,4 +19,6 @@ jobs:
         nikola build
     - name: Deploy
       if: ${{ github.ref == 'refs/heads/src' }}
-      run: nikola github_deploy
+      run: |
+        git fetch origin master
+        nikola github_deploy
