@@ -7,5 +7,19 @@ jobs:
     steps:
     - name: Check out
       uses: actions/checkout@v2
-    - name: Build and Deploy Nikola
-      uses: getnikola/nikola-action@v2
+    - name: Set up python 3.10
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.10'
+    - name: Install Nikola and dependencies
+      run: pip install -r requirements.txt ghp-import2
+    - name: Build site
+      run: |
+        printf '\n\nGITHUB_REMOTE_NAME = "origin"\nGITHUB_COMMIT_SOURCE = False\n' >> conf.py
+        nikola build
+    - name: Deploy (dry-run)
+      if: ${{ github.ref != 'refs/heads/src' }}
+      run: nikola github_deploy
+    - name: Deploy
+      if: ${{ github.ref == 'refs/heads/src' }}
+      run: nikola github_deploy
