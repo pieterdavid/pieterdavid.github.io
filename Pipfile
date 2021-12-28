@@ -7,9 +7,7 @@ verify_ssl = true
 
 [packages]
 notebook = "*"
-nikola = {editable = true, path = "/home/pieter/projects/nikola"}
-flake8 = "*"
-black = "*"
+nikola = ">=8.2.0"
 
 [requires]
-python_version = "3.9"
+python_version = "3.10"
