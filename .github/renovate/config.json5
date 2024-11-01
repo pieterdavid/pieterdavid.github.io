@@ -6,7 +6,9 @@
       "repository": "pieterdavid/pieterdavid.github.io",
     },
   ],
-  {
-    "extends": ["config:recommended"]
+  "extends": ["config:recommended"],
+  "lockFileMaintenance": {
+    "enabled": true,
   },
+  "username": "renovate-bot",
 }
