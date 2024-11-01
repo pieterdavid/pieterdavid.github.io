@@ -6,7 +6,5 @@
       "repository": "pieterdavid/pieterdavid.github.io",
     },
   ],
-  {
-    "extends": ["config:recommended"]
-  },
+  "extends": ["config:recommended"],
 }
