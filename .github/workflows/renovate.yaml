@@ -11,7 +11,7 @@ jobs:
           app-id: ${{ vars.RENOVATE_APP_ID }}
           private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
-          repositories: ${{ github.repository }}
+          repositories: pieterdavid.github.io
       - name: Checkout
         uses: actions/checkout@v4.2.2
       - name: Self-hosted renovate
