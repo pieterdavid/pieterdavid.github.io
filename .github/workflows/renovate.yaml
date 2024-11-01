@@ -5,12 +5,20 @@ jobs:
   renovate:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/create-github-app-token@v1
+        id: app-token
+        with:
+          app-id: ${{ vars.RENOVATE_APP_ID }}
+          private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+          repositories: ${{ github.repository }}
       - name: Checkout
         uses: actions/checkout@v4.2.2
       - name: Self-hosted renovate
         uses: renovatebot/github-action@v40.3.4
         with:
           configurationFile: .github/renovate/config.json5
-          token: ${{ secrets.RENOVATE_TOKEN }}
+          token: '${{ steps.app-token.outputs.token }}'
         env:
           LOG_LEVEL: 'debug'
+          RENOVATE_PLATFORM_COMMIT: 'true'
