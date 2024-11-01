@@ -9,6 +9,7 @@
   "extends": ["config:recommended"],
   "lockFileMaintenance": {
     "enabled": true,
+    "schedule": ["at any time"],
   },
   "username": "renovate-bot",
 }
