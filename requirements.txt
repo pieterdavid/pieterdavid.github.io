@@ -1,2 +1,0 @@
-Nikola[extras]>=8.2.0
-notebook>=4.0.0

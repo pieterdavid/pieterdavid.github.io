@@ -7,18 +7,14 @@ jobs:
     steps:
     - name: Check out
       uses: actions/checkout@v2
-    - name: Set up python 3.10
-      uses: actions/setup-python@v2
-      with:
-        python-version: '3.10'
-    - name: Install Nikola and dependencies
-      run: pip install -r requirements.txt ghp-import2
+    - name: Install uv
+      uses: astral-sh/setup-uv@v3
     - name: Build site
       run: |
         printf '\n\nGITHUB_REMOTE_NAME = "origin"\nGITHUB_COMMIT_SOURCE = False\n' >> conf.py
-        nikola build
+        uv run nikola build
     - name: Deploy
       if: ${{ github.ref == 'refs/heads/src' }}
       run: |
         git fetch origin master
-        nikola github_deploy
+        uv run nikola github_deploy
