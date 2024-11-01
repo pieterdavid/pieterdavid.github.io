@@ -1,0 +1,12 @@
+{
+  "onboarding": false,
+  "requireConfig": false,
+  "repositories": [
+    {
+      "repository": "pieterdavid/pieterdavid.github.io",
+    },
+  ],
+  {
+    "extends": ["config:recommended"]
+  },
+}
