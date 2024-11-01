@@ -1,6 +1,6 @@
 {
   "onboarding": false,
-  "requireConfig": false,
+  "requireConfig": "optional",
   "repositories": [
     {
       "repository": "pieterdavid/pieterdavid.github.io",
@@ -11,6 +11,6 @@
     "enabled": true,
     "schedule": ["at any time"],
   },
-  "username": "renovate-bot",
+  "username": "self-hosted-renovate-gha[bot]",
   "gitAuthor": "self-hosted-renovate-gha[bot] <187029121+self-hosted-renovate-gha[bot]@users.noreply.github.com>",
 }
