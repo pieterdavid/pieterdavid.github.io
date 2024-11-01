@@ -1,0 +1,11 @@
+[project]
+name = "personalblog"
+version = "0.1.0"
+author = "Pieter David"
+description = "Personal blog source"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "nikola[extras]>=8.3.1",
+    "notebook>=7.2.2",
+]
