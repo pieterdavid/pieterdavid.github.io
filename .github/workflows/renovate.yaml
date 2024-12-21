@@ -5,6 +5,9 @@ on:
     # The "*" (#42, asterisk) character has special semantics in YAML, so this
     # string has to be quoted.
     - cron: '0 7 * * *'
+  push:
+    branches:
+      - src
 jobs:
   renovate:
     runs-on: ubuntu-latest
