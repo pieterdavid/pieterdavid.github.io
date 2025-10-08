@@ -8,7 +8,7 @@ jobs:
     - name: Check out
       uses: actions/checkout@v5
     - name: Install uv
-      uses: astral-sh/setup-uv@v6
+      uses: astral-sh/setup-uv@v7
     - name: Build site
       run: |
         printf '\n\nGITHUB_REMOTE_NAME = "origin"\nGITHUB_COMMIT_SOURCE = False\n' >> conf.py
