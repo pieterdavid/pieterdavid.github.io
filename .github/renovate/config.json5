@@ -11,6 +11,13 @@
     "enabled": true,
     "schedule": ["at any time"],
   },
+  "packageRules": [
+    {
+      // Match the 1 week quarantine (tool.uv.exclude-newer in pyproject.toml)
+      "matchManagers": ["pep621"],
+      "minimumReleaseAge": "7 days",
+    },
+  ],
   "username": "self-hosted-renovate-gha[bot]",
   "gitAuthor": "self-hosted-renovate-gha[bot] <187029121+self-hosted-renovate-gha[bot]@users.noreply.github.com>",
 }
