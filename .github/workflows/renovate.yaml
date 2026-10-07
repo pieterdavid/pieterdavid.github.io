@@ -19,6 +19,20 @@ jobs:
           private-key: ${{ secrets.RENOVATE_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repositories: pieterdavid.github.io
+      - name: Request lock file maintenance refresh
+        # Renovate only regenerates an existing lock file maintenance branch
+        # when rebasing, so tick the PR's rebase checkbox on scheduled runs
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ steps.app-token.outputs.token }}
+        run: |
+          pr=$(gh pr list --repo "$GITHUB_REPOSITORY" --head renovate/lock-file-maintenance \
+                 --state open --json number --jq '.[0].number // empty')
+          if [ -n "$pr" ]; then
+            gh pr view "$pr" --repo "$GITHUB_REPOSITORY" --json body --jq .body \
+              | sed 's/- \[ \] <!-- rebase-check -->/- [x] <!-- rebase-check -->/' \
+              | gh pr edit "$pr" --repo "$GITHUB_REPOSITORY" --body-file -
+          fi
       - name: Checkout
         uses: actions/checkout@v7.0.1
       - name: Self-hosted renovate

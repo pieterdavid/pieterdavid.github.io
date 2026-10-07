@@ -9,3 +9,7 @@ dependencies = [
     "nikola[extras]>=8.3.1",
     "notebook>=7.2.2",
 ]
+
+[tool.uv]
+# Supply-chain quarantine: ignore releases published less than a week ago
+exclude-newer = "1 week"
